@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar/Navbar";
 import type React from "react";
 export default function RootLayout({
@@ -9,7 +10,7 @@ export default function RootLayout({
     <main className="">
       <Navbar />
       {children}
-      {/* <Footer/> */}
+      <Footer/>
     </main>
   );
 }
