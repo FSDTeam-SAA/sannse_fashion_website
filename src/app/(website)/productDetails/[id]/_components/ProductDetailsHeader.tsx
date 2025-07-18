@@ -1,14 +1,13 @@
-// app/about-us/page.tsx
 import PageHeader from '@/components/pageHeader/PageHeader';
 import React from 'react';
 
-function ProductPageHeader() {
+function ProductDetailsHeader() {
   const headerData = {
-    title: "All Products",
+    title: "Product Details",
     navItems: [
-      { label: "Home ", href: "/" },
-      { label: "Products ", href: "/products" },
-       { label: "Readymade Product", href: "/about-us" },
+      { label: "Home", href: "/" },
+      { label: "Product", href: "/about-us" },
+      { label: "Product-Details", href: "/about-us" },
     ],
   };
 
@@ -20,4 +19,4 @@ function ProductPageHeader() {
   );
 }
 
-export default ProductPageHeader;
+export default ProductDetailsHeader;

@@ -13,7 +13,7 @@ import ProductCard from "@/components/productCard/ProductCard";
 import { Button } from "@/components/ui/button";
 
 interface Product {
-  id: number;
+  id: number ;
   title: string;
   image: StaticImageData;
 }
@@ -73,6 +73,7 @@ export default function OurProducts() {
             key={product.id}
             imageSrc={product.image}
             title={product.title}
+            id={product.id}
           />
         ))}
       </div>

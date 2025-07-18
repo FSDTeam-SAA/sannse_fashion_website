@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from "react";
 import ProductSorting from "@/components/productSorting/ProductSorting";
-import ShowAllProducts from "./ShowAllProducts"; // Make sure this file accepts 'products' as props
-import productImage from "@/public/images/productImage.png";
+import productImage from "@/public/images/productimge2.png";
 import { StaticImageData } from "next/image";
+import ShowAllOtherProduct from "./ShowAllOtherProduct";
 
 // Product type
 interface Product {
@@ -25,7 +25,7 @@ interface FilterProps {
   priceRange: [number, number];
 }
 
-const SortingProduct = () => {
+const SortingOtherProduct = () => {
   const [products, setProducts] = useState<Product[]>([]);
 
   // Dummy product data with random prices
@@ -146,11 +146,11 @@ const SortingProduct = () => {
           <ProductSorting onFilterChange={handleFilterChange} />
         </div>
         <div className="w-full">
-          <ShowAllProducts products={products} />
+          <ShowAllOtherProduct products={products} />
         </div>
       </div>
     </div>
   );
 };
 
-export default SortingProduct;
+export default SortingOtherProduct;

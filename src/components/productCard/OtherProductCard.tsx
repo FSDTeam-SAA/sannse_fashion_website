@@ -9,11 +9,11 @@ type ProductCardProps = {
   id: number;
 };
 
-const ProductCard: React.FC<ProductCardProps> = ({ imageSrc, title, id }) => {
+const OtherProductCard: React.FC<ProductCardProps> = ({ imageSrc, title, id }) => {
   return (
     <Card className="w-full container overflow-hidden ">
       <CardContent className="p-0">
-        <Link href={`/productDetails/${id}`}>
+        <Link href={`/other-product-details/${id}`}>
           <Image
             src={imageSrc}
             alt={title}
@@ -30,4 +30,4 @@ const ProductCard: React.FC<ProductCardProps> = ({ imageSrc, title, id }) => {
   );
 };
 
-export default ProductCard;
+export default OtherProductCard;

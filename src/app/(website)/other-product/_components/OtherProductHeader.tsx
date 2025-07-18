@@ -2,13 +2,13 @@
 import PageHeader from '@/components/pageHeader/PageHeader';
 import React from 'react';
 
-function ProductPageHeader() {
+function OtherProductHeader() {
   const headerData = {
-    title: "All Products",
+    title: "Others Products",
     navItems: [
       { label: "Home ", href: "/" },
       { label: "Products ", href: "/products" },
-       { label: "Readymade Product", href: "/about-us" },
+       { label: "Others Products", href: "/about-us" },
     ],
   };
 
@@ -20,4 +20,4 @@ function ProductPageHeader() {
   );
 }
 
-export default ProductPageHeader;
+export default OtherProductHeader;

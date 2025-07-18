@@ -41,6 +41,7 @@ export default function OthersProducts() {
             key={product.id}
             imageSrc={product.image}
             title={product.title}
+            id={product.id}
           />
         ))}
       </div>

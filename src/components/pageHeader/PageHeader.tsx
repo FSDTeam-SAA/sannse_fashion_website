@@ -21,7 +21,7 @@ const PageHeader: React.FC<NavbarBannerProps> = ({ title, navItems }) => {
   const pathname = usePathname();
 
   return (
-    <div className="relative w-full h-[300px] bg-black">
+    <div className="relative w-full h-[350px] bg-black">
       <Image
         src={pageHeaderImage}
         alt="Clothes on hangers"
