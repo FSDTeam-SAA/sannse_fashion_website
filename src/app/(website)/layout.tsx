@@ -9,8 +9,8 @@ export default function RootLayout({
   return (
     <main className="">
       <Navbar />
-      {children}
-      <Footer/>
+      <div className="mt-[70px]">{children}</div>
+      <Footer />
     </main>
   );
 }
