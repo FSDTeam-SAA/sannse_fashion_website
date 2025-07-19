@@ -32,14 +32,18 @@ export default function AccountLayout({ children }: { children: React.ReactNode 
 
 
 //   page header title and nav items
-           const headerData = {
-    title: "All Products",
-    navItems: [
-      { label: "Home ", href: "/" },
-      { label: "My Profile", href: "/My Profile" },
-       { label: " Personal Information", href: "/ Personal Information" },
-    ],
-  };
+const currentPage = navItems.find((item) => item.href === pathname)
+
+const headerData = {
+  title: currentPage?.name || "My Account",
+  navItems: [
+    { label: "Home", href: "/" },
+    { label: "My Profile", href: "/account/personal-information" },
+    ...(currentPage
+      ? [{ label: currentPage.name, href: currentPage.href }]
+      : []),
+  ],
+}
 
   return (
   <>
