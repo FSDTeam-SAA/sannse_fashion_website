@@ -43,9 +43,9 @@ export default function AccountLayout({ children }: { children: React.ReactNode 
   return (
   <>
     <PageHeader title={headerData.title} navItems={headerData.navItems} />
-    <div className="h-90vh flex items-center justify-center bg-white p-4 sm:p-6 lg:p-8">
+    <div className="h-screen flex items-center justify-center bg-white ">
       <div className="flex flex-col md:flex-row w-full max-w-6xl bg-white rounded-lg  overflow-hidden ">
-        <aside className="w-full md:w-64 border-b md:border-b-0 md:border-r border-gray-200 p-6 flex flex-col">
+        <aside className="w-full md:w-64 border-b md:border-b-0  border-gray-200 p-6 flex flex-col">
           <div className="flex flex-col items-center mb-8">
             <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-gray-300">
               <Image
@@ -101,7 +101,7 @@ export default function AccountLayout({ children }: { children: React.ReactNode 
             </Link>
           </div>
         </aside>
-        <main className="flex-1 p-6 overflow-auto">{children}</main>
+        <main className="flex-1 h-[90vh] p-6 overflow-auto">{children}</main>
       </div>
     </div>
   </>
