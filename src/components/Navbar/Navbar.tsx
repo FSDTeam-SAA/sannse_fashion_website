@@ -121,7 +121,7 @@ export default function Navbar() {
               {/* <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span> */}
             </Link>
             <Link 
-              href="/profile" 
+              href="/account" 
               className="text-white hover:text-gray-300 transition-colors"
             >
               <User className="h-5 w-5" />
