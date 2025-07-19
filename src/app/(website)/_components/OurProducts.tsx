@@ -1,63 +1,95 @@
 "use client";
 
 import type { StaticImageData } from "next/image";
-import shirt1 from "@/public/images/productImage.png";
-import shirt2 from "@/public/images/productImage.png";
-import shirt3 from "@/public/images/productImage.png";
-import shirt4 from "@/public/images/productImage.png";
-import shirt5 from "@/public/images/productImage.png";
-import shirt6 from "@/public/images/productImage.png";
-import shirt7 from "@/public/images/productImage.png";
-import shirt8 from "@/public/images/productImage.png";
+import shirt1 from "@/public/images/jacketProduct.png";
+import shirt2 from "@/public/images/jacketProduct.png";
+import shirt3 from "@/public/images/jacketProduct.png";
 import ProductCard from "@/components/productCard/ProductCard";
 import { Button } from "@/components/ui/button";
 
-interface Product {
-  id: number ;
+export type Product = {
+  id: number;
   title: string;
   image: StaticImageData;
-}
+  category: string;
+  size: string;
+  color: string;
+  price: number;
+};
 
 const products: Product[] = [
   {
     id: 1,
-    title: "Westwood Shirt Men's Black Glitter Tuxedo Formal Suit",
+    title: "Westwood Shirt Men's Black ",
     image: shirt1,
+    category: "Shirt",
+    size: "M",
+    color: "Black",
+    price: 99,
   },
   {
     id: 2,
-    title: "Westwood Shirt Men's Black Glitter Tuxedo Formal Suit",
+    title: "Westwood Shirt Men's Navy Slim Fit Shirt",
     image: shirt2,
+    category: "Shirt",
+    size: "L",
+    color: "Navy",
+    price: 105,
   },
   {
     id: 3,
-    title: "Westwood Shirt Men's Black Glitter Tuxedo Formal Suit",
+    title: "Formal Slim Fit Dress Shirt with Cufflinks",
     image: shirt3,
+    category: "Shirt",
+    size: "S",
+    color: "White",
+    price: 89,
   },
+
   {
     id: 4,
-    title: "Westwood Shirt Men's Black Glitter Tuxedo Formal Suit",
-    image: shirt4,
+    title: "Formal Slim Fit Dress Shirt with Cufflinks",
+    image: shirt3,
+    category: "Shirt",
+    size: "S",
+    color: "White",
+    price: 89,
   },
   {
     id: 5,
-    title: "Westwood Shirt Men's Black Glitter Tuxedo Formal Suit",
-    image: shirt5,
+    title: "Formal Slim Fit Dress Shirt with Cufflinks",
+    image: shirt3,
+    category: "Shirt",
+    size: "S",
+    color: "White",
+    price: 89,
   },
   {
     id: 6,
-    title: "Westwood Shirt Men's Black Glitter Tuxedo Formal Suit",
-    image: shirt6,
+    title: "Formal Slim Fit Dress Shirt with Cufflinks",
+    image: shirt3,
+    category: "Shirt",
+    size: "S",
+    color: "White",
+    price: 89,
   },
   {
     id: 7,
-    title: "Westwood Shirt Men's Black Glitter Tuxedo Formal Suit",
-    image: shirt7,
+    title: "Formal Slim Fit Dress Shirt with Cufflinks",
+    image: shirt3,
+    category: "Shirt",
+    size: "S",
+    color: "White",
+    price: 89,
   },
   {
     id: 8,
-    title: "Westwood Shirt Men's Black Glitter Tuxedo Formal Suit",
-    image: shirt8,
+    title: "Formal Slim Fit Dress Shirt with Cufflinks",
+    image: shirt3,
+    category: "Shirt",
+    size: "S",
+    color: "White",
+    price: 89,
   },
 ];
 
@@ -71,9 +103,7 @@ export default function OurProducts() {
         {products.map((product) => (
           <ProductCard
             key={product.id}
-            imageSrc={product.image}
-            title={product.title}
-            id={product.id}
+            product={product}
           />
         ))}
       </div>

@@ -1,10 +1,10 @@
 import React from 'react'
-import FullProductDetails from './_components/FullProductDetails'
+import CheckoutPage from './_components/CheckoutPage'
 
 function page() {
   return (
     <div>
-      <FullProductDetails />
+        <CheckoutPage />
     </div>
   )
 }

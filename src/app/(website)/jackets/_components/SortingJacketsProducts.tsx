@@ -1,12 +1,12 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import { useState, useEffect } from "react";
 import ProductSorting from "@/components/productSorting/ProductSorting";
-import ShowAllProducts from "./ShowAllProducts";
-import productImage from "@/public/images/productImage.png";
+import productImage from "@/public/images/jacketProduct.png";
 import { StaticImageData } from "next/image";
+import ShowJacketsProducts from "./ShowJacketsProducts";
 
+// Product type
 interface Product {
   id: number;
   title: string;
@@ -17,6 +17,7 @@ interface Product {
   price: number;
 }
 
+// Filter type
 interface FilterProps {
   category?: string;
   size?: string;
@@ -24,9 +25,10 @@ interface FilterProps {
   priceRange: [number, number];
 }
 
-const SortingProduct = () => {
+const SortingJacketsProducts = () => {
   const [products, setProducts] = useState<Product[]>([]);
 
+  // Dummy product data with random prices
   const dummyProducts: Product[] = [
     {
       id: 1,
@@ -111,10 +113,13 @@ const SortingProduct = () => {
     },
   ];
 
+  // Load initial data
   useEffect(() => {
+    /* eslint-disable react-hooks/exhaustive-deps */
     setProducts(dummyProducts);
   }, []);
 
+  // Handle filters
   const handleFilterChange = (newFilters: FilterProps) => {
     let filtered = [...dummyProducts];
 
@@ -141,11 +146,11 @@ const SortingProduct = () => {
           <ProductSorting onFilterChange={handleFilterChange} />
         </div>
         <div className="w-full">
-          <ShowAllProducts products={products} />
+          <ShowJacketsProducts products={products} />
         </div>
       </div>
     </div>
   );
 };
 
-export default SortingProduct;
+export default SortingJacketsProducts;

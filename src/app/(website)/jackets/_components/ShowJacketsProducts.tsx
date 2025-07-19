@@ -1,7 +1,7 @@
 "use client";
 
 import type { StaticImageData } from "next/image";
-import OtherProductCard from "@/components/productCard/OtherProductCard";
+import ProductCard from "@/components/productCard/ProductCard";
 
 interface Product {
   id: number;
@@ -13,16 +13,16 @@ interface Product {
   price: number;
 }
 
-interface ShowAllProductsProps {
+interface ShowJacketsProducts {
   products: Product[];
 }
 
-export default function ShowAllOtherProduct({ products }: ShowAllProductsProps) {
+export default function ShowJacketsProducts({ products }: ShowJacketsProducts) {
   return (
     <div className="container mx-auto">
       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-[30px] place-items-center">
         {products.map((product) => (
-          <OtherProductCard key={product.id} product={product} />
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
     </div>
