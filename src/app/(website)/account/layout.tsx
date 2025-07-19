@@ -7,6 +7,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Lock, LogOut, Package, User } from "lucide-react"
 import { cn } from "@/lib/utils"
+import PageHeader from "@/components/pageHeader/PageHeader"
 
 export default function AccountLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
@@ -29,9 +30,21 @@ export default function AccountLayout({ children }: { children: React.ReactNode 
     },
   ]
 
+
+           const headerData = {
+    title: "All Products",
+    navItems: [
+      { label: "Home ", href: "/" },
+      { label: "My Profile", href: "/My Profile" },
+       { label: " Personal Information", href: "/ Personal Information" },
+    ],
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white p-4 sm:p-6 lg:p-8">
-      <div className="flex flex-col md:flex-row w-full max-w-6xl bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200">
+  <>
+    <PageHeader title={headerData.title} navItems={headerData.navItems} />
+    <div className="h-90vh flex items-center justify-center bg-white p-4 sm:p-6 lg:p-8">
+      <div className="flex flex-col md:flex-row w-full max-w-6xl bg-white rounded-lg  overflow-hidden ">
         <aside className="w-full md:w-64 border-b md:border-b-0 md:border-r border-gray-200 p-6 flex flex-col">
           <div className="flex flex-col items-center mb-8">
             <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-gray-300">
@@ -70,7 +83,7 @@ export default function AccountLayout({ children }: { children: React.ReactNode 
                 href={item.href}
                 className={cn(
                   "flex items-center gap-3 rounded-lg px-3 py-2 text-gray-700 transition-all hover:bg-gray-100 hover:text-gray-900",
-                  pathname === item.href && "bg-red-100 text-red-600",
+                  pathname === item.href && "bg-red-100 ",
                 )}
               >
                 <item.icon className="h-5 w-5" />
@@ -91,5 +104,6 @@ export default function AccountLayout({ children }: { children: React.ReactNode 
         <main className="flex-1 p-6 overflow-auto">{children}</main>
       </div>
     </div>
+  </>
   )
 }

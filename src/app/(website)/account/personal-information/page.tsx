@@ -1,3 +1,4 @@
+import PageHeader from "@/components/pageHeader/PageHeader"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -5,7 +6,13 @@ import { Label } from "@/components/ui/label"
 import { Edit } from "lucide-react"
 
 export default function PersonalInformationPage() {
+
+
+
   return (
+
+<>
+     
     <Card className="w-full bg-white border-none text-gray-900 shadow-none">
       <CardHeader className="flex flex-row items-center justify-between pb-4">
         <CardTitle className="text-2xl font-bold">Personal Information</CardTitle>
@@ -74,5 +81,6 @@ export default function PersonalInformationPage() {
         </div>
       </CardContent>
     </Card>
+</>
   )
 }
