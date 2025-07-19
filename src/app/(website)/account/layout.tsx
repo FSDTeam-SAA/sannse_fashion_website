@@ -31,6 +31,7 @@ export default function AccountLayout({ children }: { children: React.ReactNode 
   ]
 
 
+//   page header title and nav items
            const headerData = {
     title: "All Products",
     navItems: [
@@ -82,16 +83,24 @@ export default function AccountLayout({ children }: { children: React.ReactNode 
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "flex items-center gap-3 rounded-lg px-3 py-2 text-gray-700 transition-all hover:bg-gray-100 hover:text-gray-900",
+                  "flex items-center gap-3 rounded-lg px-3 py-4 text-gray-700 transition-all hover:bg-gray-100 hover:text-gray-900",
                   pathname === item.href && "bg-red-100 ",
                 )}
               >
                 <item.icon className="h-5 w-5" />
                 {item.name}
               </Link>
+              
             ))}
+               <Link
+              href="/logout"
+              className="flex items-center gap-3 rounded-lg px-3 py-2 text-red-500 transition-all hover:bg-red-50 hover:text-red-600"
+            >
+              <LogOut className="h-5 w-5" />
+              Log out
+            </Link>
           </nav>
-          <div className="mt-auto pt-4 md:pt-0">
+          {/* <div className="mt-auto pt-4 md:pt-0">
             <Link
               href="/logout"
               className="flex items-center gap-3 rounded-lg px-3 py-2 text-red-500 transition-all hover:bg-red-50 hover:text-red-600"
@@ -99,7 +108,7 @@ export default function AccountLayout({ children }: { children: React.ReactNode 
               <LogOut className="h-5 w-5" />
               Log out
             </Link>
-          </div>
+          </div> */}
         </aside>
         <main className="flex-1 h-[90vh] p-6 overflow-auto">{children}</main>
       </div>

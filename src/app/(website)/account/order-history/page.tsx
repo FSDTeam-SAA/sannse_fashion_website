@@ -54,30 +54,53 @@ const orders = [
   },
 ]
 
+// Status-to-color mapping (standardized + cancelled support)
+const getStatusColor = (status: string) => {
+  switch (status) {
+    case "Shipping":
+      return "bg-blue-500 text-white"
+    case "Processing":
+      return "bg-yellow-500 text-white"
+    case "Completed":
+      return "bg-emerald-500 text-white"
+    case "Cancelled":
+      return "bg-red-500 text-white"
+    default:
+      return "bg-gray-400 text-white"
+  }
+}
+
+
+
 export default function OrderHistoryPage() {
   return (
-    <Card className="w-full bg-gray-900 border-none text-white">
+    <Card className="w-full  border-none rounded-lg ">
       <CardHeader>
         <CardTitle className="text-2xl font-bold">Order History</CardTitle>
       </CardHeader>
       <CardContent>
-        <Table>
-          <TableHeader>
-            <TableRow className="border-gray-700">
-              <TableHead className="text-gray-400">Order ID</TableHead>
-              <TableHead className="text-gray-400">Total</TableHead>
-              <TableHead className="text-gray-400">Status</TableHead>
-              <TableHead className="text-gray-400">Date</TableHead>
-              <TableHead className="text-gray-400"></TableHead>
+        <Table className="border border-[#FDE8E9] rounded-lg">
+            {/* Table header  */}
+          <TableHeader className="rounded-lg ">
+            <TableRow className="border-gray-700 p-0 bg-[#FDE8E9] !text-black rounded-lg">
+              <TableHead className="text-black">Order ID</TableHead>
+              <TableHead className="text-black">Total</TableHead>
+              <TableHead className="text-black">Status</TableHead>
+              <TableHead className="text-black">Date</TableHead>
+              <TableHead className="text-black">Details</TableHead>
             </TableRow>
           </TableHeader>
+
+          {/* Table data body  */}
           <TableBody>
             {orders.map((order) => (
-              <TableRow key={order.id} className="border-gray-800 hover:bg-gray-800">
+              <TableRow key={order.id} className="border-gray-800">
                 <TableCell className="font-medium">{order.id}</TableCell>
                 <TableCell>{order.total}</TableCell>
                 <TableCell>
-                  <span className={`px-3 py-1 rounded-full text-xs font-semibold ${order.statusColor}`}>
+                 <span
+                    className={`px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(order.status)}`}
+                  >
                     {order.status}
                   </span>
                 </TableCell>
@@ -85,7 +108,7 @@ export default function OrderHistoryPage() {
                 <TableCell>
                   <Link
                     href={`/account/order-history/${order.id.replace("#", "")}`}
-                    className="text-pink-600 hover:underline"
+                    className="font-semibold hover:underline"
                   >
                     View Details
                   </Link>

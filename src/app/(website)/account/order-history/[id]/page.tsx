@@ -60,7 +60,7 @@ export default function OrderDetailsPage({ params }: { params: { orderId: string
     <div className="space-y-8">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold">Order Details</h1>
-        <Link href="/dashboard/order-history">
+        <Link href="/account/order-history">
           <Button className="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded-md">← Back to List</Button>
         </Link>
       </div>
