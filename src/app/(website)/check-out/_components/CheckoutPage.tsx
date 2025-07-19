@@ -15,7 +15,9 @@ interface CartItem {
 export default function CartPage() {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [errorImages, setErrorImages] = useState<Record<string | number, boolean>>({});
+  const [errorImages, setErrorImages] = useState<
+    Record<string | number, boolean>
+  >({});
 
   useEffect(() => {
     try {
@@ -104,50 +106,53 @@ export default function CartPage() {
 
   return (
     <div className="lg:my-[83px] md:py-[70px] py-[65px]">
-      <div className="w-[70%] mx-auto bg-white min-h-screen">
+      <div className="w-[70%] mx-auto  min-h-screen">
         <div className="p-4">
-          <h1 className="lg:text-[32px] md:text-[28px] text-[20px] text-[#212121] leading-[120%] font-semibold mb-4">Review your cart</h1>
+          <h1 className="lg:text-[32px] md:text-[28px] text-[20px] text-[#212121] leading-[120%] font-semibold mb-4">
+            Review your cart
+          </h1>
         </div>
 
-        <div className="p-4 space-y-4">
-  {cartItems.map((item) => (
-    <div key={item.id} className="bg-pink-50 rounded-lg p-4">
-      <div className="flex items-center gap-6">
-        {/* Product Image */}
-        <div className="w-16 h-20 bg-gray-200 rounded-lg overflow-hidden flex-shrink-0">
-          <Image
-            src={
-              errorImages[item.id]
-                ? "https://via.placeholder.com/64x80?text=No+Image"
-                : item.image
-            }
-            alt={item.title}
-            width={64}
-            height={80}
-            className="w-full h-full object-cover"
-            onError={() => handleImageError(item.id)}
-          />
-        </div>
+        <div className="bg-[#FDE8E9] rounded-[12px]">
+          <div className="p-6 space-y-4">
+            {cartItems.map((item) => (
+              <div key={item.id} className="bg-[#FDDDDE] rounded-lg p-4">
+                <div className="flex items-center gap-6">
+                  {/* Product Image */}
+                  <div className="w-16 h-20 bg-gray-200 rounded-lg overflow-hidden flex-shrink-0">
+                    <Image
+                      src={
+                        errorImages[item.id]
+                          ? "https://via.placeholder.com/64x80?text=No+Image"
+                          : item.image
+                      }
+                      alt={item.title}
+                      width={64}
+                      height={80}
+                      className="w-full h-full object-cover"
+                      onError={() => handleImageError(item.id)}
+                    />
+                  </div>
 
-        {/* Product Info */}
-        <div className="flex-1 space-y-1">
-          <h3 className="text-[20px] font-semibold leading-[120%] text-[#212121]">
-            {item.title}
-          </h3>
-          <p className="text-xs text-gray-600">
-            {item.size ? `Size: ${item.size}` : "No size selected"}
-          </p>
-          <div className="text-lg font-semibold text-gray-900">
-            ${item.price}
+                  {/* Product Info */}
+                  <div className="flex-1 space-y-1">
+                    <h3 className="text-[20px] font-semibold leading-[120%] text-[#212121]">
+                      {item.title}
+                    </h3>
+                    <p className="text-xs text-gray-600">
+                      {item.size ? `Size: ${item.size}` : "No size selected"}
+                    </p>
+                    <div className="text-lg font-semibold text-gray-900">
+                      ${item.price}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-        </div>
-      </div>
-    </div>
-  ))}
-</div>
 
-        <div className="bg-[#FDE8E9] rounded-lg p-6 space-y-4">
-            <div className="flex justify-between">
+          <div className="p-4 space-y-4">
+            <div className="flex justify-between text-sm">
               <span className="text-[20px] font-semibold leading-[120%] text-[#212121]">
                 Subtotal
               </span>
@@ -155,7 +160,7 @@ export default function CartPage() {
                 ${subtotal.toFixed(2)}
               </span>
             </div>
-            <div className="flex justify-between">
+            <div className="flex justify-between text-sm">
               <span className="text-[20px] font-semibold leading-[120%] text-[#212121]">
                 Sales Tax
               </span>
@@ -163,16 +168,24 @@ export default function CartPage() {
                 ${salesTax.toFixed(2)}
               </span>
             </div>
-            <div className="flex justify-between">
+            <div className="flex justify-between text-sm">
               <span className="text-[20px] font-semibold leading-[120%] text-[#212121]">
                 Total Items
               </span>
               <span className="text-[20px] font-semibold leading-[120%] text-[#212121]">
-                {totalItems.toString().padStart(2, "0")}
+                {totalItems}
               </span>
             </div>
-            <hr className="border-gray-300" />
-            <div className="flex justify-between text-lg">
+            <div className="flex justify-between text-sm">
+              <span className="text-[20px] font-semibold leading-[120%] text-[#212121]">
+                Shipping costs
+              </span>
+              <span className="text-[20px] font-semibold leading-[120%] text-[#212121]">
+                ${shippingCosts.toFixed(2)}
+              </span>
+            </div>
+            <hr className="border-gray-200" />
+            <div className="flex justify-between text-lg font-semibold">
               <span className="text-[20px] font-semibold leading-[120%] text-[#212121]">
                 Total
               </span>
@@ -182,24 +195,27 @@ export default function CartPage() {
             </div>
           </div>
 
-        <div className="p-4 space-y-3">
-          <button className="w-full bg-white border border-gray-200 rounded-lg p-4 flex items-center justify-between hover:border-gray-300 transition-colors">
-            <div className="flex items-center gap-3">
-              <div className="w-4 h-4 border-2 border-gray-300 rounded-full flex items-center justify-center">
-                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+          <div className="p-4 space-y-3">
+            <button className="w-full border border-gray-500 rounded-lg p-4 flex items-center justify-between hover:border-gray-300 transition-colors">
+              <div className="flex items-center gap-3">
+                <div className="w-4 h-4 border-2 border-gray-300 rounded-full flex items-center justify-center">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                </div>
+                <span className="text-base leading-[120%] font-medium">
+                  Pay With Stripe
+                </span>
               </div>
-              <span className="text-gray-900 font-medium">Pay With Stripe</span>
-            </div>
-            <div className="text-blue-600 font-bold text-lg">stripe</div>
-          </button>
+              <div className="text-blue-600 font-bold text-lg">stripe</div>
+            </button>
 
-          <button
-            className="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-4 rounded-lg transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
-            disabled={cartItems.length === 0}
-            onClick={() => alert("Proceeding to checkout...")}
-          >
-            Pay now
-          </button>
+            <button
+              className="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-4 rounded-lg transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
+              disabled={cartItems.length === 0}
+              onClick={() => alert("Proceeding to checkout...")}
+            >
+              Pay now
+            </button>
+          </div>
         </div>
       </div>
     </div>
