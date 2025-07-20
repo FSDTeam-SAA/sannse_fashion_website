@@ -1,30 +1,64 @@
-"use client"
-import Link from 'next/link'
-import { ChevronDown, ShoppingCart, User, Menu, X } from 'lucide-react'
-import { Button } from "@/components/ui/button"
+"use client";
+import Link from 'next/link';
+import { ChevronDown, ShoppingCart, User, Menu, X } from 'lucide-react';
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { useState, useEffect } from 'react'
+} from "@/components/ui/dropdown-menu";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { useState, useEffect } from 'react';
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
+
+  // Function to calculate total cart quantity
+  const updateCartCount = () => {
+    try {
+      const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      const totalQuantity = cart.reduce((sum: number, item: { quantity: number }) => sum + item.quantity, 0);
+      setCartCount(totalQuantity);
+    } catch (error) {
+      console.error("Error reading cart from localStorage:", error);
+      setCartCount(0);
+    }
+  };
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop
-      setIsScrolled(scrollTop > 0)
-    }
+    // Initial cart count
+    updateCartCount();
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    // Listen for storage events (cross-window updates)
+    const handleStorageChange = () => {
+      updateCartCount();
+    };
+
+    // Listen for custom cart update events (same-window updates)
+    const handleCartUpdate = () => {
+      updateCartCount();
+    };
+
+    // Handle scroll for navbar styling
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      setIsScrolled(scrollTop > 0);
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    window.addEventListener('cartUpdated', handleCartUpdate);
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('cartUpdated', handleCartUpdate);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <nav className={`fixed top-0 w-full z-50 text-white border-b transition-all duration-300 ${
@@ -50,60 +84,61 @@ export default function Navbar() {
             <div className="ml-10 flex items-baseline space-x-8">
               <Link 
                 href="/" 
-                className="text-white hover:text-gray-300 px-3 py-2 text-sm font-medium transition-colors"
+                className="text-white hover:text-gray-300 px-3 py-2 text-sm font-medium transition-colors min-w-[60px]"
               >
                 Home
               </Link>
               
               <Link 
                 href="/about" 
-                className="text-white hover:text-gray-300 px-3 py-2 text-sm font-medium underline decoration-red-500 decoration-2 underline-offset-4 transition-colors"
+                className="text-white hover:text-gray-300 px-3 py-2 text-sm font-medium underline decoration-red-500 decoration-2 underline-offset-4 transition-colors min-w-[60px]"
               >
                 About
               </Link>
               
-              {/* Products Dropdown */}
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button 
-                    variant="ghost" 
-                    className="text-white hover:text-gray-300 hover:bg-transparent px-3 py-2 text-sm font-medium flex items-center space-x-1"
-                  >
-                    <span>Products</span>
-                    <ChevronDown className="h-4 w-4" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-48 bg-black/95 backdrop-blur-md border-gray-700 text-white">
-                  <DropdownMenuGroup>
-                    <DropdownMenuItem className="hover:bg-gray-800 focus:bg-gray-800">
-                      <Link href="/products/category1" className="w-full">
-                        Category 1
-                      </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem className="hover:bg-gray-800 focus:bg-gray-800">
-                      <Link href="/products/category2" className="w-full">
-                        Category 2
-                      </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem className="hover:bg-gray-800 focus:bg-gray-800">
-                      <Link href="/products/category3" className="w-full">
-                        Category 3
-                      </Link>
-                    </DropdownMenuItem>
-                  </DropdownMenuGroup>
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <div className="relative min-w-[100px]">
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button 
+                      variant="ghost" 
+                      className="text-white hover:text-gray-300 hover:bg-transparent px-3 py-2 text-sm font-medium flex items-center space-x-1 w-full justify-center"
+                    >
+                      <span>Products</span>
+                      <ChevronDown className="h-5 w-5" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="w-48 bg-black/95 backdrop-blur-md border-gray-700 text-white">
+                    <DropdownMenuGroup>
+                      <DropdownMenuItem className="hover:bg-gray-800 focus:bg-gray-800">
+                        <Link href="/products/category1" className="w-full">
+                          Category 1
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem className="hover:bg-gray-800 focus:bg-gray-800">
+                        <Link href="/products/category2" className="w-full">
+                          Category 2
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem className="hover:bg-gray-800 focus:bg-gray-800">
+                        <Link href="/products/category3" className="w-full">
+                          Category 3
+                        </Link>
+                      </DropdownMenuItem>
+                    </DropdownMenuGroup>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
               
               <Link 
                 href="/faq" 
-                className="text-white hover:text-gray-300 px-3 py-2 text-sm font-medium transition-colors"
+                className="text-white hover:text-gray-300 px-3 py-2 text-sm font-medium transition-colors min-w-[60px]"
               >
                 FAQ
               </Link>
               
               <Link 
                 href="/contact" 
-                className="text-white hover:text-gray-300 px-3 py-2 text-sm font-medium transition-colors"
+                className="text-white hover:text-gray-300 px-3 py-2 text-sm font-medium transition-colors min-w-[60px]"
               >
                 Contact
               </Link>
@@ -111,20 +146,23 @@ export default function Navbar() {
           </div>
 
           {/* Right Side Icons */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-6">
             <Link 
               href="/cart" 
               className="text-white hover:text-gray-300 transition-colors relative"
             >
-              <ShoppingCart className="h-5 w-5" />
-              {/* Optional: Add cart count badge */}
-              {/* <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span> */}
+              <ShoppingCart className="h-6 w-6" />
+              {cartCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  {cartCount}
+                </span>
+              )}
             </Link>
             <Link 
               href="/profile" 
               className="text-white hover:text-gray-300 transition-colors"
             >
-              <User className="h-5 w-5" />
+              <User className="h-6 w-6" />
             </Link>
           </div>
 
@@ -133,7 +171,7 @@ export default function Navbar() {
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="text-white hover:bg-gray-800">
-                  <Menu className="h-6 w-6" />
+                  <Menu className="h-7 w-7" />
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] bg-black/95 backdrop-blur-md text-white border-gray-700">
@@ -147,7 +185,7 @@ export default function Navbar() {
                     onClick={() => setIsOpen(false)}
                     className="text-white hover:bg-gray-800"
                   >
-                    <X className="h-6 w-6" />
+                    <X className="h-7 w-7" />
                   </Button>
                 </div>
                 
@@ -217,16 +255,19 @@ export default function Navbar() {
                       className="text-white hover:text-gray-300 transition-colors relative"
                       onClick={() => setIsOpen(false)}
                     >
-                      <ShoppingCart className="h-6 w-6" />
-                      {/* Optional: Add cart count badge */}
-                      {/* <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span> */}
+                      <ShoppingCart className="h-7 w-7" />
+                      {cartCount > 0 && (
+                        <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                          {cartCount}
+                        </span>
+                      )}
                     </Link>
                     <Link 
                       href="/profile" 
                       className="text-white hover:text-gray-300 transition-colors"
                       onClick={() => setIsOpen(false)}
                     >
-                      <User className="h-6 w-6" />
+                      <User className="h-7 w-7" />
                     </Link>
                   </div>
                 </div>
@@ -236,5 +277,5 @@ export default function Navbar() {
         </div>
       </div>
     </nav>
-  )
+  );
 }
