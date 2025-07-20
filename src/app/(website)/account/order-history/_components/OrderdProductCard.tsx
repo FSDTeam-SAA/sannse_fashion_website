@@ -14,7 +14,7 @@ interface Product {
 
 export default function OrderdProductCard ({ product }: { product: Product }) {
   return (
-    <Card className=" bg-[#FDDDDE] border-none flex items-center p-4">
+    <Card className=" bg-[#FDDDDE] border-none rounded-lg flex items-center p-4">
       <Image
         src={product.image || "/placeholder.svg"}
         alt={product.name}
