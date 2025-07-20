@@ -1,10 +1,10 @@
 import React from 'react'
-import FullProductDetails from './_components/FullProductDetails'
+import TermsOfService from './_components/TermsOfService'
 
 function page() {
   return (
     <div>
-      <FullProductDetails />
+        <TermsOfService />
     </div>
   )
 }
