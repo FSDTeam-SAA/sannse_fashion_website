@@ -1,10 +1,10 @@
 import React from 'react'
-import FullProductDetails from './_components/FullProductDetails'
+import ContactForm from './_components/ContactForm'
 
 function page() {
   return (
     <div>
-      <FullProductDetails />
+        <ContactForm />
     </div>
   )
 }

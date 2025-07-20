@@ -1,10 +1,9 @@
-import { cn } from "@/lib/utils"
-import Image from "next/image"
+
 import Link from "next/link"
-import { CheckCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-
+import OrderStatusTracker from "../_components/OrderStatusTracker"
+import OrderdProductCard from "../_components/OrderdProductCard"
 export default function OrderDetailsPage({ params }: { params: { orderId: string } }) {
   const { orderId } = params
 
@@ -30,7 +29,7 @@ export default function OrderDetailsPage({ params }: { params: { orderId: string
     },
     products: [
       {
-        id: 1,
+        id: "1",
         name: "Lorem ipsum dolor sit amet, consectetur efficitur.",
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tincidunt porta laoreet. Praesent a leo et leo ornare mollis quis quis erat. Integer aliquam dapibus justo at dapibus.",
@@ -38,7 +37,7 @@ export default function OrderDetailsPage({ params }: { params: { orderId: string
         image: "/images/product-image.png",
       },
       {
-        id: 2,
+        id: "2",
         name: "Lorem ipsum dolor sit amet, consectetur efficitur.",
         description:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tincidunt porta laoreet. Praesent a leo et leo ornare mollis quis quis erat. Integer aliquam dapibus justo at dapibus.",
@@ -61,7 +60,7 @@ export default function OrderDetailsPage({ params }: { params: { orderId: string
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold">Order Details</h1>
         <Link href="/account/order-history">
-          <Button className="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded-md">← Back to List</Button>
+          <Button className="bg-[#EF1A26] hover:bg-[#EF1A26] text-white px-4 py-2 rounded-md">← Back to List</Button>
         </Link>
       </div>
 
@@ -123,7 +122,14 @@ export default function OrderDetailsPage({ params }: { params: { orderId: string
         </Card>
       </div>
 
-      <Card className="bg-gray-900 border-none text-white">
+
+{/* order status  */}
+  <OrderStatusTracker
+        statusSteps={statusSteps}
+        currentStatus={orderDetails.status}
+      />
+    
+ {/* <Card className="bg-white border border-gray-200 rounded-lg text-gray-900 shadow-none">
         <CardHeader>
           <CardTitle className="text-xl font-semibold">Order Status</CardTitle>
         </CardHeader>
@@ -134,23 +140,23 @@ export default function OrderDetailsPage({ params }: { params: { orderId: string
                 <div
                   className={cn(
                     "w-8 h-8 rounded-full flex items-center justify-center",
-                    orderDetails.status >= step.step ? "bg-pink-600" : "bg-gray-700",
+                    orderDetails.status >= step.step ? "bg-red-500" : "bg-gray-300",
                   )}
                 >
                   {orderDetails.status >= step.step ? (
                     <CheckCircle className="h-5 w-5 text-white" />
                   ) : (
-                    <span className="text-sm font-bold">{step.step}</span>
+                    <span className="text-sm font-bold text-gray-700">{step.step}</span>
                   )}
                 </div>
-                <span className="mt-2 text-sm   ">{step.name}</span>
+                <span className="mt-2 text-sm text-gray-700">{step.name}</span>
                 {index < statusSteps.length - 1 && (
                   <div
                     className={cn(
                       "absolute h-1 top-1/2 -translate-y-1/2",
                       `left-[calc(${index * (100 / (statusSteps.length - 1))}% + 20px)]`,
                       `w-[calc(${100 / (statusSteps.length - 1)}% - 40px)]`,
-                      orderDetails.status > step.step ? "bg-pink-600" : "bg-gray-700",
+                      orderDetails.status > step.step ? "bg-red-500" : "bg-gray-300",
                     )}
                   />
                 )}
@@ -158,9 +164,21 @@ export default function OrderDetailsPage({ params }: { params: { orderId: string
             ))}
           </div>
         </CardContent>
-      </Card>
+      </Card> */}
 
-      <div className="grid grid-cols-1 gap-6">
+    
+
+
+
+{/* prdouct items  */}
+  <div className="grid grid-cols-1 gap-6">
+      {orderDetails.products.map((product) => (
+        <OrderdProductCard key={product.id} product={product} />
+      ))}
+    </div>
+
+
+      {/* <div className="grid grid-cols-1 gap-6">
         {orderDetails.products.map((product) => (
           <Card key={product.id} className="bg-gray-900 border-none text-white flex items-center p-4">
             <Image
@@ -177,7 +195,9 @@ export default function OrderDetailsPage({ params }: { params: { orderId: string
             </div>
           </Card>
         ))}
-      </div>
+      </div> */}
+
+
     </div>
   )
 }
