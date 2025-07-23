@@ -13,6 +13,8 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
+import Image from "next/image"
+import logoImage from "@/public/images/logo.svg";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -92,9 +94,12 @@ export default function Navbar() {
         >
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className={`font-bold transition-all duration-300 ${isScrolled ? "text-xl" : "text-2xl"}`}>
+            {/* <Link href="/" className={`font-bold transition-all duration-300 ${isScrolled ? "text-xl" : "text-2xl"}`}>
               SAN<span className="text-red-500">N</span>SE
-            </Link>
+            </Link> */}
+            <div className="w-[156px] h-[48px]">
+              <Image src={logoImage} alt="logo image" width={200} height={200} className="w-full h-full object-cover"/>
+            </div>
           </div>
           {/* Desktop Navigation */}
           <div className="hidden md:block">
@@ -160,7 +165,7 @@ export default function Navbar() {
                 FAQ
               </Link>
               <Link
-                href="/contact"
+                href="/contact-us"
                 className={`text-white hover:text-gray-300 px-3 py-2 text-sm font-medium transition-colors min-w-[60px] ${
                   pathname === "/contact" ? "underline decoration-red-500 decoration-2 underline-offset-4" : ""
                 }`}
@@ -302,7 +307,7 @@ export default function Navbar() {
                     FAQ
                   </Link>
                   <Link
-                    href="/contact"
+                    href="/contact-us"
                     className={`text-white hover:text-gray-300 py-2 text-lg font-medium transition-colors ${
                       pathname === "/contact" ? "underline decoration-red-500 decoration-2 underline-offset-4" : ""
                     }`}
