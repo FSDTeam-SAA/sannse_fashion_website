@@ -48,10 +48,13 @@ const headerData = {
   return (
   <>
     <PageHeader title={headerData.title} navItems={headerData.navItems} />
-    <div className="h-screen flex items-center justify-center bg-white ">
-      <div className="flex flex-col md:flex-row w-full max-w-6xl bg-white rounded-lg  overflow-hidden ">
-        <aside className="w-full md:w-64 border-b md:border-b-0  border-gray-200 p-6 flex flex-col">
-          <div className="flex flex-col items-center mb-8">
+
+    {/* account content  */}
+    <div className="min-h-screen bg-white py-8 px-4">
+      <div className="flex flex-col md:flex-row w-full max-w-6xl mx-auto bg-white rounded-lg overflow-hidden ">
+        {/* Sidebar */}
+        <aside className="w-full md:w-64 border-b md:border-b-0 md:border-r border-gray-200 p-6 flex flex-col items-center">
+          <div className="flex flex-col items-center mb-6">
             <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-gray-300">
               <Image
                 src="/images/profile-pic.png"
@@ -78,45 +81,46 @@ const headerData = {
                 </svg>
               </div>
             </div>
-            <h2 className="text-lg font-semibold mt-4 text-gray-900">Bessie Edwards</h2>
-            <p className="text-sm text-gray-500">darrellsteward@gmail.com</p>
+            <h2 className="text-base md:text-lg font-semibold mt-4 text-center text-gray-900">
+              Bessie Edwards
+            </h2>
+            <p className="text-sm text-center text-gray-500 break-words">
+              darrellsteward@gmail.com
+            </p>
           </div>
-          <nav className="flex-1 space-y-2">
+
+          {/* Nav */}
+          <nav className="w-full space-y-2">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "flex items-center gap-3 rounded-lg px-3 py-4 text-gray-700 transition-all hover:bg-gray-100 hover:text-gray-900",
-                  pathname === item.href && "bg-red-100 ",
+                  "flex items-center gap-3 rounded-lg px-3 py-3 text-sm text-gray-700 transition-all hover:bg-gray-100 hover:text-gray-900",
+                  pathname === item.href && "bg-red-100 font-medium"
                 )}
               >
                 <item.icon className="h-5 w-5" />
                 {item.name}
               </Link>
-              
             ))}
-               <Link
+            <Link
               href="/logout"
-              className="flex items-center gap-3 rounded-lg px-3 py-2 text-red-500 transition-all hover:bg-red-50 hover:text-red-600"
+              className="flex items-center gap-3 rounded-lg px-3 py-3 text-sm text-red-500 transition-all hover:bg-red-50 hover:text-red-600"
             >
               <LogOut className="h-5 w-5" />
               Log out
             </Link>
           </nav>
-          {/* <div className="mt-auto pt-4 md:pt-0">
-            <Link
-              href="/logout"
-              className="flex items-center gap-3 rounded-lg px-3 py-2 text-red-500 transition-all hover:bg-red-50 hover:text-red-600"
-            >
-              <LogOut className="h-5 w-5" />
-              Log out
-            </Link>
-          </div> */}
         </aside>
-        <main className="flex-1 h-[90vh] p-6 overflow-auto">{children}</main>
+
+        {/* Main Content */}
+        <main className="flex-1 p-4 md:p-6 overflow-y-auto">{children}</main>
       </div>
     </div>
+
+
+    
   </>
   )
 }
