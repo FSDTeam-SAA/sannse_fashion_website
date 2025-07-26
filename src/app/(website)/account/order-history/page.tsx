@@ -79,7 +79,7 @@ export default function OrderHistoryPage() {
         <CardTitle className="text-2xl font-bold">Order History</CardTitle>
       </CardHeader>
       <CardContent>
-        <Table className="border border-[#FDE8E9] rounded-lg">
+        <Table className="border border-[#FDE8E9] rounded-lg  overflow-x-auto ">
             {/* Table header  */}
           <TableHeader className="rounded-lg ">
             <TableRow className="border-gray-700 p-0 bg-[#FDE8E9] !text-black rounded-lg">
