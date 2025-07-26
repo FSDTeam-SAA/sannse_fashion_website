@@ -79,7 +79,7 @@ const HowDoesItWork: React.FC = () => {
   return (
     <section className="py-[88px] px-4 container mx-auto">
       <div className="mb-12">
-        <h2 className="lg:text-[40px] md:text-[30px] text-[20px] font-semibold leading-[120%] text-[#000000] mb-[40px]">
+        <h2 className="lg:text-[40px] md:text-[30px] text-[28px] font-semibold leading-[120%] text-[#000000] mb-[40px]">
           How does it work?
         </h2>
       </div>

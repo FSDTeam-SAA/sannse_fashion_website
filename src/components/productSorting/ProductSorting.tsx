@@ -68,7 +68,7 @@ const ProductSorting = ({
   return (
     <div className="p-4 bg-[#FDE8E9] rounded-[12px]">
       <div className="mb-4">
-        <h3 className="lg:text-2xl md:text-xl text-base text-[#212121] leading-[120%] mb-[16px] font-semibold">
+        <h3 className="lg:text-2xl md:text-xl text-[20px] text-[#212121] leading-[120%] mb-[16px] font-semibold">
           By Category
         </h3>
         {categories.map((category) => (
@@ -93,7 +93,7 @@ const ProductSorting = ({
       </div>
 
       <div className="mb-4">
-        <h3 className="lg:text-2xl md:text-xl text-base text-[#212121] leading-[120%] mb-[16px] font-semibold">
+        <h3 className="lg:text-2xl md:text-xl text-[20px] text-[#212121] leading-[120%] mb-[16px] font-semibold">
           By Size
         </h3>
         {sizes.map((size) => (
@@ -118,31 +118,35 @@ const ProductSorting = ({
       </div>
 
       <div className="mb-4">
-        <h3 className="lg:text-2xl md:text-xl text-base text-[#212121] leading-[120%] mb-[16px] font-semibold">
-          By Color
-        </h3>
-        <div className="grid grid-cols-6 gap-2">
-          {colors.map((color) => (
-            <div key={color} className="flex items-center">
-              <input
-                type="radio"
-                id={color}
-                name="color"
-                value={color}
-                checked={selectedColor === color}
-                onChange={(e) => setSelectedColor(e.target.value)}
-                className="mr-2 hidden"
-              />
-              <label
-                htmlFor={color}
-                className="w-[30px] h-[30px] rounded-[4px] cursor-pointer"
-                style={{ backgroundColor: color }}
-                onClick={() => setSelectedColor(color)}
-              ></label>
-            </div>
-          ))}
-        </div>
+  <h3 className="lg:text-2xl md:text-xl text-[20px] text-[#212121] leading-[120%] mb-[16px] font-semibold">
+    By Color
+  </h3>
+  <div className="grid grid-cols-6 gap-2">
+    {colors.map((color) => (
+      <div key={color} className="flex items-center">
+        <input
+          type="radio"
+          id={color}
+          name="color"
+          value={color}
+          checked={selectedColor === color}
+          onChange={(e) => setSelectedColor(e.target.value)}
+          className="mr-2 hidden"
+        />
+        <label
+          htmlFor={color}
+          className={`w-[30px] h-[30px] rounded-[4px] cursor-pointer transition-all ${
+            selectedColor === color
+              ? "ring-2 ring-offset-2 ring-blue-500"
+              : ""
+          }`}
+          style={{ backgroundColor: color }}
+          onClick={() => setSelectedColor(color)}
+        ></label>
       </div>
+    ))}
+  </div>
+</div>
 
       <div className="mb-4">
         <h3 className="lg:text-2xl md:text-xl text-base text-[#212121] leading-[120%] font-semibold">

@@ -51,7 +51,7 @@ const OtherProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <Card className="w-full container overflow-hidden relative group transition-transform duration-300 transform hover:scale-105">
       <CardContent className="p-0">
-        <Link href={`/productDetails/${product.id}`}>
+        <Link href={`/other-product-details/${product.id}`}>
           <Image
             src={product.image}
             alt={product.title}

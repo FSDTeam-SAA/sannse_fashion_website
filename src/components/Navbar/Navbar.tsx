@@ -1,92 +1,105 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { ChevronDown, ShoppingCart, User, Menu, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import Link from "next/link";
+import {
+  ChevronDown,
+  ShoppingCart,
+  User,
+  Menu,
+  X,
+  CircleUser,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { useState, useEffect } from "react"
-import { usePathname } from "next/navigation"
-import Image from "next/image"
+} from "@/components/ui/dropdown-menu";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import Image from "next/image";
 import logoImage from "@/public/images/logo.svg";
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [cartCount, setCartCount] = useState(0)
+  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
   // State to manage login status
-  const [isLoggedIn, setIsLoggedIn] = useState(false) // Default to false
-  const pathname = usePathname()
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Default to false
+  const pathname = usePathname();
 
   // Function to calculate total cart quantity
   const updateCartCount = () => {
     try {
-      const cart = JSON.parse(localStorage.getItem("cart") || "[]")
-      const totalQuantity = cart.reduce((sum: number, item: { quantity: number }) => sum + item.quantity, 0)
-      setCartCount(totalQuantity)
+      const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      const totalQuantity = cart.reduce(
+        (sum: number, item: { quantity: number }) => sum + item.quantity,
+        0
+      );
+      setCartCount(totalQuantity);
     } catch (error) {
-      console.error("Error reading cart from localStorage:", error)
-      setCartCount(0)
+      console.error("Error reading cart from localStorage:", error);
+      setCartCount(0);
     }
-  }
+  };
 
   // Simulate login/logout for demonstration
   const handleLogin = () => {
-    setIsLoggedIn(true)
+    setIsLoggedIn(true);
     // In a real app, this would involve API calls and setting tokens/sessions
-    console.log("User logged in!")
-  }
+    console.log("User logged in!");
+  };
 
   const handleLogout = () => {
-    setIsLoggedIn(false)
+    setIsLoggedIn(false);
     // In a real app, this would involve clearing tokens/sessions
-    console.log("User logged out!")
-  }
+    console.log("User logged out!");
+  };
 
   useEffect(() => {
     // Initial cart count
-    updateCartCount()
+    updateCartCount();
 
     // Listen for storage events (cross-window updates)
     const handleStorageChange = () => {
-      updateCartCount()
-    }
+      updateCartCount();
+    };
 
     // Listen for custom cart update events (same-window updates)
     const handleCartUpdate = () => {
-      updateCartCount()
-    }
+      updateCartCount();
+    };
 
     // Handle scroll for navbar styling
     const handleScroll = () => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop
-      setIsScrolled(scrollTop > 0)
-    }
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+      setIsScrolled(scrollTop > 0);
+    };
 
-    window.addEventListener("storage", handleStorageChange)
-    window.addEventListener("cartUpdated", handleCartUpdate)
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("storage", handleStorageChange);
+    window.addEventListener("cartUpdated", handleCartUpdate);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener("storage", handleStorageChange)
-      window.removeEventListener("cartUpdated", handleCartUpdate)
-      window.removeEventListener("scroll", handleScroll)
-    }
-  }, [])
+      window.removeEventListener("storage", handleStorageChange);
+      window.removeEventListener("cartUpdated", handleCartUpdate);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <nav
       className={`fixed top-0 w-full z-50 text-white border-b transition-all duration-300 ${
-        isScrolled ? "bg-black/95 backdrop-blur-md border-gray-700 shadow-lg" : "bg-[#000000] border-gray-800"
+        isScrolled
+          ? "bg-black/95 backdrop-blur-md border-gray-700 shadow-lg"
+          : "bg-[#000000] border-gray-800"
       }`}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 lg:px-0 md:pr-4">
         <div
           className={`flex items-center justify-between transition-all duration-300 ${
             isScrolled ? "h-[70px]" : "h-[88px]"
@@ -94,12 +107,17 @@ export default function Navbar() {
         >
           {/* Logo */}
           <div className="flex-shrink-0">
-            {/* <Link href="/" className={`font-bold transition-all duration-300 ${isScrolled ? "text-xl" : "text-2xl"}`}>
-              SAN<span className="text-red-500">N</span>SE
-            </Link> */}
-            <div className="w-[156px] h-[48px]">
-              <Image src={logoImage} alt="logo image" width={200} height={200} className="w-full h-full object-cover"/>
-            </div>
+            <Link href="/">
+              <div className="w-[156px] h-[48px]">
+                <Image
+                  src={logoImage}
+                  alt="logo image"
+                  width={200}
+                  height={200}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </Link>
           </div>
           {/* Desktop Navigation */}
           <div className="hidden md:block">
@@ -107,7 +125,9 @@ export default function Navbar() {
               <Link
                 href="/"
                 className={`text-white hover:text-gray-300 px-3 py-2 text-sm font-medium transition-colors min-w-[60px] ${
-                  pathname === "/" ? "underline decoration-red-500 decoration-2 underline-offset-4" : ""
+                  pathname === "/"
+                    ? "underline decoration-red-500 decoration-2 underline-offset-4"
+                    : ""
                 }`}
               >
                 Home
@@ -115,7 +135,9 @@ export default function Navbar() {
               <Link
                 href="/about-us"
                 className={`text-white hover:text-gray-300 px-3 py-2 text-sm font-medium transition-colors min-w-[60px] ${
-                  pathname === "/about-us" ? "underline decoration-red-500 decoration-2 underline-offset-4" : ""
+                  pathname === "/about-us"
+                    ? "underline decoration-red-500 decoration-2 underline-offset-4"
+                    : ""
                 }`}
               >
                 About
@@ -159,7 +181,9 @@ export default function Navbar() {
               <Link
                 href="/faq"
                 className={`text-white hover:text-gray-300 px-3 py-2 text-sm font-medium transition-colors min-w-[60px] ${
-                  pathname === "/faq" ? "underline decoration-red-500 decoration-2 underline-offset-4" : ""
+                  pathname === "/faq"
+                    ? "underline decoration-red-500 decoration-2 underline-offset-4"
+                    : ""
                 }`}
               >
                 FAQ
@@ -167,7 +191,9 @@ export default function Navbar() {
               <Link
                 href="/contact-us"
                 className={`text-white hover:text-gray-300 px-3 py-2 text-sm font-medium transition-colors min-w-[60px] ${
-                  pathname === "/contact" ? "underline decoration-red-500 decoration-2 underline-offset-4" : ""
+                  pathname === "/contact"
+                    ? "underline decoration-red-500 decoration-2 underline-offset-4"
+                    : ""
                 }`}
               >
                 Contact
@@ -176,7 +202,10 @@ export default function Navbar() {
           </div>
           {/* Right Side Icons */}
           <div className="hidden md:flex items-center space-x-6">
-            <Link href="/cart" className="text-white hover:text-gray-300 transition-colors relative">
+            <Link
+              href="/cart"
+              className="text-white hover:text-gray-300 transition-colors relative"
+            >
               <ShoppingCart className="h-6 w-6" />
               {cartCount > 0 && (
                 <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
@@ -187,7 +216,11 @@ export default function Navbar() {
             {isLoggedIn ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon" className="text-white hover:bg-gray-800">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="text-white hover:bg-gray-800"
+                  >
                     <User className="h-6 w-6" />
                   </Button>
                 </DropdownMenuTrigger>
@@ -198,29 +231,47 @@ export default function Navbar() {
                         Account
                       </Link>
                     </DropdownMenuItem>
-                    <DropdownMenuItem className="hover:bg-gray-800 focus:bg-gray-800" onClick={handleLogout}>
+                    <DropdownMenuItem
+                      className="hover:bg-gray-800 focus:bg-gray-800"
+                      onClick={handleLogout}
+                    >
                       Logout
                     </DropdownMenuItem>
                   </DropdownMenuGroup>
                 </DropdownMenuContent>
               </DropdownMenu>
             ) : (
-              <Button variant="ghost" className="text-white hover:text-gray-300" onClick={handleLogin}>
-                Login
-              </Button>
+              <div
+                className="text-white hover:text-gray-300"
+                onClick={handleLogin}
+              >
+                {/* Login */}
+                <CircleUser className="h-7 w-7" />
+              </div>
             )}
           </div>
           {/* Mobile menu button */}
           <div className="md:hidden">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="text-white hover:bg-gray-800">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="text-white hover:bg-gray-800"
+                >
                   <Menu className="h-7 w-7" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] bg-black/95 backdrop-blur-md text-white border-gray-700">
+              <SheetContent
+                side="right"
+                className="w-[300px] bg-black/95 backdrop-blur-md text-white border-gray-700"
+              >
                 <div className="flex items-center justify-between mb-6">
-                  <Link href="/" className="text-2xl font-bold" onClick={() => setIsOpen(false)}>
+                  <Link
+                    href="/"
+                    className="text-2xl font-bold"
+                    onClick={() => setIsOpen(false)}
+                  >
                     SAN<span className="text-red-500">N</span>SE
                   </Link>
                   <Button
@@ -236,7 +287,9 @@ export default function Navbar() {
                   <Link
                     href="/"
                     className={`text-white hover:text-gray-300 py-2 text-lg font-medium transition-colors ${
-                      pathname === "/" ? "underline decoration-red-500 decoration-2 underline-offset-4" : ""
+                      pathname === "/"
+                        ? "underline decoration-red-500 decoration-2 underline-offset-4"
+                        : ""
                     }`}
                     onClick={() => setIsOpen(false)}
                   >
@@ -245,7 +298,9 @@ export default function Navbar() {
                   <Link
                     href="/about"
                     className={`text-white hover:text-gray-300 py-2 text-lg font-medium transition-colors ${
-                      pathname === "/about" ? "underline decoration-red-500 decoration-2 underline-offset-4" : ""
+                      pathname === "/about"
+                        ? "underline decoration-red-500 decoration-2 underline-offset-4"
+                        : ""
                     }`}
                     onClick={() => setIsOpen(false)}
                   >
@@ -300,7 +355,9 @@ export default function Navbar() {
                   <Link
                     href="/faq"
                     className={`text-white hover:text-gray-300 py-2 text-lg font-medium transition-colors ${
-                      pathname === "/faq" ? "underline decoration-red-500 decoration-2 underline-offset-4" : ""
+                      pathname === "/faq"
+                        ? "underline decoration-red-500 decoration-2 underline-offset-4"
+                        : ""
                     }`}
                     onClick={() => setIsOpen(false)}
                   >
@@ -309,7 +366,9 @@ export default function Navbar() {
                   <Link
                     href="/contact-us"
                     className={`text-white hover:text-gray-300 py-2 text-lg font-medium transition-colors ${
-                      pathname === "/contact" ? "underline decoration-red-500 decoration-2 underline-offset-4" : ""
+                      pathname === "/contact"
+                        ? "underline decoration-red-500 decoration-2 underline-offset-4"
+                        : ""
                     }`}
                     onClick={() => setIsOpen(false)}
                   >
@@ -345,8 +404,8 @@ export default function Navbar() {
                           variant="ghost"
                           className="text-white hover:text-gray-300 py-2 text-lg font-medium transition-colors justify-start pl-0"
                           onClick={() => {
-                            handleLogout()
-                            setIsOpen(false)
+                            handleLogout();
+                            setIsOpen(false);
                           }}
                         >
                           Logout
@@ -357,8 +416,8 @@ export default function Navbar() {
                         variant="ghost"
                         className="text-white hover:text-gray-300 py-2 text-lg font-medium transition-colors justify-start pl-0"
                         onClick={() => {
-                          handleLogin()
-                          setIsOpen(false)
+                          handleLogin();
+                          setIsOpen(false);
                         }}
                       >
                         Login
@@ -372,5 +431,5 @@ export default function Navbar() {
         </div>
       </div>
     </nav>
-  )
+  );
 }

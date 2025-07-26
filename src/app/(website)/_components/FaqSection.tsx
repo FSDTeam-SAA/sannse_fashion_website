@@ -1,7 +1,8 @@
-"use client"
-import React, { useState } from 'react';
-import { ChevronDown, ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+"use client";
+import React, { useState } from "react";
+import { ChevronDown, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 interface FAQItem {
   id: number;
@@ -15,7 +16,11 @@ interface FAQItemProps {
   onToggle: () => void;
 }
 
-const FAQItemComponent: React.FC<FAQItemProps> = ({ item, isOpen, onToggle }) => {
+const FAQItemComponent: React.FC<FAQItemProps> = ({
+  item,
+  isOpen,
+  onToggle,
+}) => {
   return (
     <div className="border-b border-gray-600 last:border-b-0">
       <button
@@ -32,15 +37,15 @@ const FAQItemComponent: React.FC<FAQItemProps> = ({ item, isOpen, onToggle }) =>
             {item.question}
           </h3>
         </div>
-        <ChevronDown 
+        <ChevronDown
           className={`w-8 h-8 text-gray-500 transition-transform duration-200 ml-4 flex-shrink-0 ${
-            isOpen ? 'rotate-180' : ''
+            isOpen ? "rotate-180" : ""
           }`}
         />
       </button>
-      
+
       {isOpen && (
-        <div 
+        <div
           id={`faq-answer-${item.id}`}
           className="pb-6 pl-8 pr-12 animate-in slide-in-from-top-2 duration-200"
         >
@@ -60,32 +65,37 @@ const FaqSection: React.FC = () => {
     {
       id: 1,
       question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tincidunt porta laoreet. Praesent a leo et leo ornare mollis quis quis erat. Integer aliquam dapibus justo at dapibus. Aliquam erat volutpat. Quisque tincidunt ex purus, id fringilla metus mollis quis. In hac habitasse platea dictumst. Cras feugiat in purus at lobortis."
+      answer:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tincidunt porta laoreet. Praesent a leo et leo ornare mollis quis quis erat. Integer aliquam dapibus justo at dapibus. Aliquam erat volutpat. Quisque tincidunt ex purus, id fringilla metus mollis quis. In hac habitasse platea dictumst. Cras feugiat in purus at lobortis.",
     },
     {
       id: 2,
       question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tincidunt porta laoreet. Praesent a leo et leo ornare mollis quis quis erat. Integer aliquam dapibus justo at dapibus. Aliquam erat volutpat. Quisque tincidunt ex purus, id fringilla metus mollis quis."
+      answer:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tincidunt porta laoreet. Praesent a leo et leo ornare mollis quis quis erat. Integer aliquam dapibus justo at dapibus. Aliquam erat volutpat. Quisque tincidunt ex purus, id fringilla metus mollis quis.",
     },
     {
       id: 3,
       question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tincidunt porta laoreet. Praesent a leo et leo ornare mollis quis quis erat. Integer aliquam dapibus justo at dapibus. Aliquam erat volutpat."
+      answer:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tincidunt porta laoreet. Praesent a leo et leo ornare mollis quis quis erat. Integer aliquam dapibus justo at dapibus. Aliquam erat volutpat.",
     },
     {
       id: 4,
       question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tincidunt porta laoreet. Praesent a leo et leo ornare mollis quis quis erat. Integer aliquam dapibus justo at dapibus."
+      answer:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tincidunt porta laoreet. Praesent a leo et leo ornare mollis quis quis erat. Integer aliquam dapibus justo at dapibus.",
     },
     {
       id: 5,
       question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tincidunt porta laoreet. Praesent a leo et leo ornare mollis quis quis erat. Integer aliquam dapibus justo at dapibus. Aliquam erat volutpat. Quisque tincidunt ex purus."
-    }
+      answer:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tincidunt porta laoreet. Praesent a leo et leo ornare mollis quis quis erat. Integer aliquam dapibus justo at dapibus. Aliquam erat volutpat. Quisque tincidunt ex purus.",
+    },
   ];
 
   const toggleItem = (id: number) => {
-    setOpenItems(prev => {
+    setOpenItems((prev) => {
       const newSet = new Set(prev);
       if (newSet.has(id)) {
         newSet.delete(id);
@@ -98,35 +108,35 @@ const FaqSection: React.FC = () => {
 
   return (
     <section className="px-4 py-16 container mx-auto">
-  <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
-    
-    {/* Left Column - 1/3 (4 of 12 columns) */}
-    <div className="lg:col-span-4 space-y-6 text-center lg:text-left">
-      <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-        Frequently Asked <br /> Questions
-      </h2>
-      <Button className="bg-[#EF1A26] hover:bg-red-600 text-white px-6 h-[51px] rounded-md font-medium transition-all duration-200 group inline-flex items-center">
-        Explore All
-        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
-      </Button>
-    </div>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+        {/* Left Column - 1/3 (4 of 12 columns) */}
+        <div className="lg:col-span-4 space-y-6 text-center lg:text-left">
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+            Frequently Asked <br /> Questions
+          </h2>
+          <div>
+            <Link href="/faq">
+              <Button className="bg-[#EF1A26] hover:bg-red-600 text-white px-6 h-[51px] rounded-md font-medium transition-all duration-200 group inline-flex items-center">
+                Explore All
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+              </Button>
+            </Link>
+          </div>
+        </div>
 
-    {/* Right Column - 2/3 (8 of 12 columns) */}
-    <div className="lg:col-span-8 space-y-6">
-      {faqData.map((item) => (
-        <FAQItemComponent
-          key={item.id}
-          item={item}
-          isOpen={openItems.has(item.id)}
-          onToggle={() => toggleItem(item.id)}
-        />
-      ))}
-    </div>
-    
-  </div>
-</section>
-
-
+        {/* Right Column - 2/3 (8 of 12 columns) */}
+        <div className="lg:col-span-8 space-y-6">
+          {faqData.map((item) => (
+            <FAQItemComponent
+              key={item.id}
+              item={item}
+              isOpen={openItems.has(item.id)}
+              onToggle={() => toggleItem(item.id)}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };
 
