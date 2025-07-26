@@ -79,45 +79,48 @@ export default function OrderHistoryPage() {
         <CardTitle className="text-2xl font-bold">Order History</CardTitle>
       </CardHeader>
       <CardContent>
-        <Table className="border border-[#FDE8E9] rounded-lg  overflow-x-auto ">
-            {/* Table header  */}
-          <TableHeader className="rounded-lg ">
-            <TableRow className="border-gray-700 p-0 bg-[#FDE8E9] !text-black rounded-lg">
-              <TableHead className="text-black">Order ID</TableHead>
-              <TableHead className="text-black">Total</TableHead>
-              <TableHead className="text-black">Status</TableHead>
-              <TableHead className="text-black">Date</TableHead>
-              <TableHead className="text-black">Details</TableHead>
-            </TableRow>
-          </TableHeader>
+  <div className="overflow-x-auto w-full">
+    <Table className="min-w-[600px] border border-[#FDE8E9] rounded-lg">
+      {/* Table header */}
+      <TableHeader className="rounded-lg">
+        <TableRow className="border-gray-700 p-0 bg-[#FDE8E9] !text-black rounded-lg">
+          <TableHead className="text-black">Order ID</TableHead>
+          <TableHead className="text-black">Total</TableHead>
+          <TableHead className="text-black">Status</TableHead>
+          <TableHead className="text-black">Date</TableHead>
+          <TableHead className="text-black">Details</TableHead>
+        </TableRow>
+      </TableHeader>
 
-          {/* Table data body  */}
-          <TableBody>
-            {orders.map((order) => (
-              <TableRow key={order.id} className="border-gray-800">
-                <TableCell className="font-medium">{order.id}</TableCell>
-                <TableCell>{order.total}</TableCell>
-                <TableCell>
-                 <span
-                    className={`px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(order.status)}`}
-                  >
-                    {order.status}
-                  </span>
-                </TableCell>
-                <TableCell>{order.date}</TableCell>
-                <TableCell>
-                  <Link
-                    href={`/account/order-history/${order.id.replace("#", "")}`}
-                    className="font-semibold hover:underline"
-                  >
-                    View Details
-                  </Link>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </CardContent>
+      {/* Table data body */}
+      <TableBody>
+        {orders.map((order) => (
+          <TableRow key={order.id} className="border-gray-800">
+            <TableCell className="font-medium">{order.id}</TableCell>
+            <TableCell>{order.total}</TableCell>
+            <TableCell>
+              <span
+                className={`px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(order.status)}`}
+              >
+                {order.status}
+              </span>
+            </TableCell>
+            <TableCell>{order.date}</TableCell>
+            <TableCell>
+              <Link
+                href={`/account/order-history/${order.id.replace("#", "")}`}
+                className="font-semibold hover:underline"
+              >
+                View Details
+              </Link>
+            </TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  </div>
+</CardContent>
+
     </Card>
   )
 }
