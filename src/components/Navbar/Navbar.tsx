@@ -216,13 +216,12 @@ export default function Navbar() {
             {isLoggedIn ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    size="icon"
+                  <div
                     className="text-white hover:bg-gray-800"
                   >
-                    <User className="h-6 w-6" />
-                  </Button>
+                    {/* <User className="h-6 w-6" /> */}
+                    <CircleUser className="h-7 w-7" />
+                  </div>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-48 bg-black/95 backdrop-blur-md border-gray-700 text-white">
                   <DropdownMenuGroup>

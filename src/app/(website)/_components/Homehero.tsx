@@ -11,6 +11,7 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import Link from "next/link";
 
 interface SlideData {
   id: number;
@@ -102,15 +103,23 @@ export default function Homehero() {
                       {slide.subtitle}
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                      <Button className="bg-red-600 h-[51px] w-[230px] hover:bg-red-700 text-lg font-semibold transition-transform hover:scale-105">
-                        {slide.primaryButton}
-                      </Button>
-                      <Button
-                        variant="outline"
-                        className="border-2 h-[51px] border-red-600 w-[230px] text-red-600 hover:bg-red-600 hover:text-white text-lg font-semibold transition-transform hover:scale-105"
-                      >
-                        {slide.secondaryButton}
-                      </Button>
+                      <div>
+                        <Link href="/products">
+                          <Button className="bg-red-600 h-[51px] w-[230px] hover:bg-red-700 text-lg font-semibold transition-transform hover:scale-105">
+                            {slide.primaryButton}
+                          </Button>
+                        </Link>
+                      </div>
+                      <div>
+                        <Link href="/products">
+                          <Button
+                            variant="outline"
+                            className="border-2 h-[51px] border-red-600 w-[230px] text-red-600 hover:bg-red-600 hover:text-white text-lg font-semibold transition-transform hover:scale-105"
+                          >
+                            {slide.secondaryButton}
+                          </Button>
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>

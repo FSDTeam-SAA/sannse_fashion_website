@@ -47,22 +47,22 @@ const Footer: React.FC = () => {
             <h4 className="text-lg font-semibold mb-4">Quick Link</h4>
             <ul className="space-y-[24px] text-sm text-gray-400">
               <li>
-                <Link href="#" className="hover:text-white text-[16px] font-normal leading-[150%] text-[#FFFFFF]">
+                <Link href="/" className="hover:text-white text-[16px] font-normal leading-[150%] text-[#FFFFFF]">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-white text-[16px] font-normal leading-[150%] text-[#FFFFFF]">
+                <Link href="/about-us" className="hover:text-white text-[16px] font-normal leading-[150%] text-[#FFFFFF]">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-white text-[16px] font-normal leading-[150%] text-[#FFFFFF]">
+                <Link href="faq" className="hover:text-white text-[16px] font-normal leading-[150%] text-[#FFFFFF]">
                   FAQ
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-white text-[16px] font-normal leading-[150%] text-[#FFFFFF]">
+                <Link href="contact-us" className="hover:text-white text-[16px] font-normal leading-[150%] text-[#FFFFFF]">
                   Contact Us
                 </Link>
               </li>
@@ -96,7 +96,6 @@ const Footer: React.FC = () => {
           </div>
         </div>
       </div>
-
       {/* Copyright */}
       <div className="container mx-auto mt-8 border-t border-gray-700 py-4 flex flex-col sm:flex-row items-center justify-between text-sm text-gray-500 gap-2 sm:gap-0">
         <p>© 2025 Drip Swag All rights reserved.</p>
