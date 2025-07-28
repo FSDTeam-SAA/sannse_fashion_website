@@ -21,7 +21,7 @@ export function ConfigurationSummary() {
   }
 
   return (
-    <div className="mb-6">
+    <div className="">
       <h3 className="text-sm font-medium text-gray-700 mb-3">
         Configuration Summary
       </h3>

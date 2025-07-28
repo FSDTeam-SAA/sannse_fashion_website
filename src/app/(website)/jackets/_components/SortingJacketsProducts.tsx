@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import ProductSorting from "@/components/productSorting/ProductSorting";
-import productImage from "@/public/images/jacketProduct.png";
+import productImage from "@/Public/images/jacketProduct.png";
 import { StaticImageData } from "next/image";
 import ShowJacketsProducts from "./ShowJacketsProducts";
 

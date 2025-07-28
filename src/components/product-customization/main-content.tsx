@@ -1,6 +1,6 @@
 "use client";
 
-import { useCustomization } from "@/components/product-customization//customization-context";
+import { useCustomization } from "@/components/product-customization/customization-context";
 import Image from "next/image";
 
 export function MainContent() {

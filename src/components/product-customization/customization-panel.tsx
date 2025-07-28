@@ -24,7 +24,7 @@ export function CustomizationPanel() {
   };
 
   return (
-    <div className="w-80 bg-gray-50 border-r border-gray-200 flex flex-col">
+    <div className="w-[480px] pt-10 bg-gray-50 border-r border-gray-200 flex flex-col">
       {/* Panel Header */}
       {currentCategory && (
         <div className="p-4 border-b border-gray-200">

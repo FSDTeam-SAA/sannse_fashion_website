@@ -3,9 +3,9 @@
 import React from "react";
 import type { StaticImageData } from "next/image";
 
-import shirt1 from "@/public/images/jacketProduct.png";
-import shirt2 from "@/public/images/jacketProduct.png";
-import shirt3 from "@/public/images/jacketProduct.png";
+import shirt1 from "@/Public/images/jacketProduct.png";
+import shirt2 from "@/Public/images/jacketProduct.png";
+import shirt3 from "@/Public/images/jacketProduct.png";
 import OtherProductCard from "@/components/productCard/OtherProductCard";
 import { Button } from "@/components/ui/button";
 export type Product = {

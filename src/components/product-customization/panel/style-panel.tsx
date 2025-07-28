@@ -106,6 +106,8 @@ export function StylePanel() {
             <div className="flex items-center">
               <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center mr-3">
                 <Image
+                  width={60}
+                  height={60}
                   src={category.icon || "/placeholder.svg"}
                   alt={category.name}
                   className="w-8 h-8"
