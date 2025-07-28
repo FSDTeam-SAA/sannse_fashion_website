@@ -3,14 +3,27 @@
 import { Search } from "lucide-react";
 import { useCustomization } from "@/components/product-customization/customization-provider";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import Image, { StaticImageData } from "next/image";
+import fabricImg from "@/Public/assets/product/fabrics/2284_huge_c300.png";
+import fabricImg1 from "@/Public/assets/product/fabrics/2790_huge_c300.png";
 
-const fabricOptions = [
+type FabricOption = {
+  id: string;
+  name: string;
+  material: string;
+  price: number;
+  color: string;
+  image?: StaticImageData | string;
+};
+
+const fabricOptions: FabricOption[] = [
   {
     id: "f1",
     name: "Navy Blue 100s",
     material: "Twill",
     price: 229,
     color: "#4a5568",
+    image: fabricImg,
   },
   {
     id: "f2",
@@ -18,6 +31,7 @@ const fabricOptions = [
     material: "Twill",
     price: 229,
     color: "#2d3748",
+    image: fabricImg1,
   },
   {
     id: "f3",
@@ -190,8 +204,13 @@ export function FabricPanel() {
       id: fabric.id,
       type: "fabric",
       name: fabric.name,
-      color: fabric.color,
+      color: typeof fabric.color === "string" ? fabric.color : undefined,
       price: fabric.price,
+      image: fabric.image
+        ? typeof fabric.image === "string"
+          ? fabric.image
+          : fabric.image.src
+        : undefined,
     });
   };
 
@@ -220,8 +239,20 @@ export function FabricPanel() {
             >
               <div
                 className="w-full aspect-square rounded-md border border-gray-200 group-hover:border-gray-400 transition-colors"
-                style={{ backgroundColor: fabric.color }}
-              />
+                style={
+                  typeof fabric.color === "string"
+                    ? { backgroundColor: fabric.color }
+                    : undefined
+                }
+              >
+                <Image
+                  src={fabric.image || ""}
+                  alt={fabric.name}
+                  width={100}
+                  height={100}
+                  className="w-full h-full object-cover rounded-md"
+                />
+              </div>
               <div className="mt-1 text-xs">
                 <div className="font-medium">{fabric.material}</div>
                 <div className="text-gray-600 truncate">{fabric.name}</div>

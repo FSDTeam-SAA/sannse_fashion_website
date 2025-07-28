@@ -19,6 +19,7 @@ export function ConfigurationSummary() {
       </div>
     );
   }
+  console.log(configuration);
 
   return (
     <div className="">
@@ -30,15 +31,24 @@ export function ConfigurationSummary() {
           {configuration.map((item) => (
             <div
               key={`${item.type}-${item.id}`}
-              className="bg-pink-100 rounded-lg p-3 text-center min-w-20 flex-shrink-0"
+              className="bg-pink-100 rounded-lg p-2 text-center min-w-20 flex-shrink-0"
             >
               {/* Visual representation */}
-              {item.color && (
-                <div
-                  className="w-8 h-8 mx-auto mb-2 rounded border border-gray-200"
-                  style={{ backgroundColor: item.color }}
-                />
-              )}
+              {item.color &&
+                (item.image ? (
+                  <Image
+                    src={item.image}
+                    alt={item.name}
+                    width={100}
+                    height={100}
+                    className="  mx-auto mb-2 rounded-md"
+                  />
+                ) : (
+                  <div
+                    className="w-8 h-8 mx-auto mb-2 rounded border border-gray-200"
+                    style={{ backgroundColor: item.color }}
+                  />
+                ))}
               {item.icon && !item.color && (
                 <div className="w-8 h-8 mx-auto mb-2">
                   <Image
