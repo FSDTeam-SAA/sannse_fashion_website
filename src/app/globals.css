@@ -74,8 +74,16 @@
   }
 }
 
-
 /* .container{
   max-width: 1170px;
   margin:0 auto;
 } */
+
+.no-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer and Edge */
+  element::-webkit-scrollbar {
+    display: none;
+  } /* Chrome, Safari, and Opera */
+  width: 2px;
+}

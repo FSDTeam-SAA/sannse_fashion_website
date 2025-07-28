@@ -14,7 +14,6 @@
 // import productImage1 from "@/public/images/productImage.png";
 // import productImage2 from "@/public/images/productimge2.png";
 
-
 // interface ProductDetailsImageProps {
 //   productId: string | string[];
 // }
@@ -212,13 +211,10 @@
 
 // export default ProductDetailsImage;
 
-
-
-
 "use client";
 
 import React, { useState } from "react";
-import Image, {  } from "next/image";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -228,8 +224,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Card, CardContent } from "@/components/ui/card";
-import productImage1 from "@/public/images/productImage.png";
-import productImage2 from "@/public/images/productimge2.png";
+import productImage1 from "@/Public/images/productImage.png";
+import productImage2 from "@/Public/images/productimge2.png";
+import Link from "next/link";
 
 // interface ProductImage {
 //   id: number;
@@ -305,7 +302,8 @@ const ProductDetailsImage: React.FC<ProductDetailsImageProps> = ({
 
       // Check if the product with the same id and size exists
       const existingItemIndex = existingCart.findIndex(
-        (item: typeof cartItem) => item.id === cartItem.id && item.size === cartItem.size
+        (item: typeof cartItem) =>
+          item.id === cartItem.id && item.size === cartItem.size
       );
 
       let updatedCart;
@@ -422,19 +420,26 @@ const ProductDetailsImage: React.FC<ProductDetailsImageProps> = ({
 
           {/* Price */}
           <div className="py-4">
-            <span className="text-4xl font-bold text-gray-900">${productData.price}</span>
+            <span className="text-4xl font-bold text-gray-900">
+              ${productData.price}
+            </span>
           </div>
 
           {/* Action Buttons */}
           <div className="flex gap-4">
-            <Button
-              className="flex-1 bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-6 rounded-md transition-colors duration-200"
-              size="lg"
+            <Link
+              href={`/customize-product/panel/${productData.id}`}
+              className="flex-1 w-full"
             >
-              Customize
-            </Button>
+              <Button
+                className="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-6 rounded-md transition-colors duration-200"
+                size="lg"
+              >
+                Customize
+              </Button>
+            </Link>
             <Button
-              className="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg"
+              className="flex-1 w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg"
               size="lg"
               onClick={handleAddToCart}
             >

@@ -1,9 +1,9 @@
 "use client";
 
 import type { StaticImageData } from "next/image";
-import shirt1 from "@/public/images/jacketProduct.png";
-import shirt2 from "@/public/images/jacketProduct.png";
-import shirt3 from "@/public/images/jacketProduct.png";
+import shirt1 from "@/Public/images/jacketProduct.png";
+import shirt2 from "@/Public/images/jacketProduct.png";
+import shirt3 from "@/Public/images/jacketProduct.png";
 import ProductCard from "@/components/productCard/ProductCard";
 import { Button } from "@/components/ui/button";
 
@@ -101,10 +101,7 @@ export default function OurProducts() {
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-[30px] place-items-center">
         {products.map((product) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-          />
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
       <div className="p-4 flex justify-center items-center mt-5">

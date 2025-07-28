@@ -2,7 +2,7 @@
 
 import React from "react";
 import CustomizeCards from "@/components/customizeCards/CustomizeCards";
-import cusotmimage from "@/public/images/customCardImage.png";
+import cusotmimage from "@/Public/images/customCardImage.png";
 
 const customizeSections = [
   {

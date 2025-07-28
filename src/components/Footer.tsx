@@ -4,7 +4,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
 import Image from "next/image";
-import logoImage from "@/public/images/logo.svg";
+import logoImage from "@/Public/images/logo.svg";
 import Link from "next/link";
 
 const Footer: React.FC = () => {
@@ -23,19 +23,36 @@ const Footer: React.FC = () => {
             />
           </div>
           <p className="text-[16px] font-normal leading-[150%] text-[#FFFFFF]">
-            Lorem ipsum dolor sit amet consectetur. Nisl ut integer eu sit ipsum arcu tortor vehicula. Fames dolor nibh cursus pulvinar diam risus.
+            Lorem ipsum dolor sit amet consectetur. Nisl ut integer eu sit ipsum
+            arcu tortor vehicula. Fames dolor nibh cursus pulvinar diam risus.
           </p>
           <div className="flex space-x-4 mt-4">
-            <Link href="#" aria-label="Facebook" className="border border-white rounded-full w-10 h-10 flex items-center justify-center">
+            <Link
+              href="#"
+              aria-label="Facebook"
+              className="border border-white rounded-full w-10 h-10 flex items-center justify-center"
+            >
               <Facebook className="w-5 h-5 text-gray-400 hover:text-white" />
             </Link>
-            <Link href="#" aria-label="Instagram" className="border border-white rounded-full w-10 h-10 flex items-center justify-center">
+            <Link
+              href="#"
+              aria-label="Instagram"
+              className="border border-white rounded-full w-10 h-10 flex items-center justify-center"
+            >
               <Instagram className="w-5 h-5 text-gray-400 hover:text-white" />
             </Link>
-            <Link href="#" aria-label="Twitter" className="border border-white rounded-full w-10 h-10 flex items-center justify-center">
+            <Link
+              href="#"
+              aria-label="Twitter"
+              className="border border-white rounded-full w-10 h-10 flex items-center justify-center"
+            >
               <Twitter className="w-5 h-5 text-gray-400 hover:text-white" />
             </Link>
-            <Link href="#" aria-label="LinkedIn" className="border border-white rounded-full w-10 h-10 flex items-center justify-center">
+            <Link
+              href="#"
+              aria-label="LinkedIn"
+              className="border border-white rounded-full w-10 h-10 flex items-center justify-center"
+            >
               <Linkedin className="w-5 h-5 text-gray-400 hover:text-white" />
             </Link>
           </div>
@@ -47,22 +64,34 @@ const Footer: React.FC = () => {
             <h4 className="text-lg font-semibold mb-4">Quick Link</h4>
             <ul className="space-y-[24px] text-sm text-gray-400">
               <li>
-                <Link href="#" className="hover:text-white text-[16px] font-normal leading-[150%] text-[#FFFFFF]">
+                <Link
+                  href="#"
+                  className="hover:text-white text-[16px] font-normal leading-[150%] text-[#FFFFFF]"
+                >
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-white text-[16px] font-normal leading-[150%] text-[#FFFFFF]">
+                <Link
+                  href="#"
+                  className="hover:text-white text-[16px] font-normal leading-[150%] text-[#FFFFFF]"
+                >
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-white text-[16px] font-normal leading-[150%] text-[#FFFFFF]">
+                <Link
+                  href="#"
+                  className="hover:text-white text-[16px] font-normal leading-[150%] text-[#FFFFFF]"
+                >
                   FAQ
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-white text-[16px] font-normal leading-[150%] text-[#FFFFFF]">
+                <Link
+                  href="#"
+                  className="hover:text-white text-[16px] font-normal leading-[150%] text-[#FFFFFF]"
+                >
                   Contact Us
                 </Link>
               </li>
@@ -72,10 +101,18 @@ const Footer: React.FC = () => {
           {/* Contact Information */}
           <div className="space-y-4">
             <h4 className="text-lg font-semibold mb-4 text-white">Contact</h4>
-            <p className="text-[16px] font-normal leading-[150%] text-[#FFFFFF]">208 Olson Boulevard,</p>
-            <p className="text-[16px] font-normal leading-[150%] text-[#FFFFFF]">Toyburgh</p>
-            <p className="text-[16px] font-normal leading-[150%] text-[#FFFFFF]">📞 (303) 555-0105</p>
-            <p className="text-[16px] font-normal leading-[150%] text-[#FFFFFF]">📧 housing@realestate.com</p>
+            <p className="text-[16px] font-normal leading-[150%] text-[#FFFFFF]">
+              208 Olson Boulevard,
+            </p>
+            <p className="text-[16px] font-normal leading-[150%] text-[#FFFFFF]">
+              Toyburgh
+            </p>
+            <p className="text-[16px] font-normal leading-[150%] text-[#FFFFFF]">
+              📞 (303) 555-0105
+            </p>
+            <p className="text-[16px] font-normal leading-[150%] text-[#FFFFFF]">
+              📧 housing@realestate.com
+            </p>
           </div>
         </div>
 

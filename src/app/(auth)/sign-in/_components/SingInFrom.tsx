@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
-import SignInImage from "@/public/images/signIn.svg";
+import SignInImage from "@/Public/images/signIn.svg";
 
 interface FormData {
   email: string;
