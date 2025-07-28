@@ -29,8 +29,6 @@
 
 // export default FullProductDetails;
 
-
-
 "use client";
 import React from "react";
 import ProductDetailsHeader from "./ProductDetailsHeader";

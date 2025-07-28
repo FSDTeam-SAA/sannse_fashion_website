@@ -4,8 +4,8 @@ import React, { useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import productImage1 from "@/public/images/productImage.png";
-import productImage2 from "@/public/images/productimge2.png";
+import productImage1 from "@/Public/images/productImage.png";
+import productImage2 from "@/Public/images/productimge2.png";
 
 interface ProductImage {
   id: number;

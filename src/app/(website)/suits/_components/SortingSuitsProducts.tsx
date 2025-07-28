@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import ProductSorting from "@/components/productSorting/ProductSorting";
-import productImage from "@/public/images/suitImage.png";
+import productImage from "@/Public/images/suitImage.png";
 import { StaticImageData } from "next/image";
 import ShowSuitsProducts from "./ShowSuitsProducts";
 
@@ -133,7 +133,11 @@ const SortingSuitsProducts = () => {
       filtered = filtered.filter((p) => p.color === newFilters.color);
     }
     if (newFilters.priceRange) {
-      filtered = filtered.filter((p) => p.price >= newFilters.priceRange[0] && p.price <= newFilters.priceRange[1]);
+      filtered = filtered.filter(
+        (p) =>
+          p.price >= newFilters.priceRange[0] &&
+          p.price <= newFilters.priceRange[1]
+      );
     }
 
     setProducts(filtered);

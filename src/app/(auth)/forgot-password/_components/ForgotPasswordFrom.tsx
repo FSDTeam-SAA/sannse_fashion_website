@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Mail } from "lucide-react";
 import Image from "next/image";
-import ForgetImage from "@/public/images/frogetPass.svg";
+import ForgetImage from "@/Public/images/frogetPass.svg";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState<string>("");

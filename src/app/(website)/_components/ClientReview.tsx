@@ -12,7 +12,7 @@ import {
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Star } from "lucide-react";
 import Image from "next/image";
-import personImage from "@/public/images/customCardImage.png";
+import personImage from "@/Public/images/customCardImage.png";
 
 type Review = {
   id: number;
@@ -32,7 +32,7 @@ const reviews: Review[] = [
     imageUrl: personImage,
     rating: 5,
     comment:
-      "Our Client ReviewRobert FoxRobert FoxRobert Fox Customer Customer Customer “Good Experience” “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id augue viverra, ullamcorper dolor at, luctus libero. Maecenas suscipit, nisl quis pellentesque laoreet, nibh neque congue dui, ut gravida."
+      "Our Client ReviewRobert FoxRobert FoxRobert Fox Customer Customer Customer “Good Experience” “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id augue viverra, ullamcorper dolor at, luctus libero. Maecenas suscipit, nisl quis pellentesque laoreet, nibh neque congue dui, ut gravida.",
   },
   {
     id: 2,
@@ -41,7 +41,7 @@ const reviews: Review[] = [
     imageUrl: personImage,
     rating: 4,
     comment:
-      "Our Client ReviewRobert FoxRobert FoxRobert Fox Customer Customer Customer “Good Experience” “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id augue viverra, ullamcorper dolor at, luctus libero. Maecenas suscipit, nisl quis pellentesque laoreet, nibh neque congue dui, ut gravida."
+      "Our Client ReviewRobert FoxRobert FoxRobert Fox Customer Customer Customer “Good Experience” “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id augue viverra, ullamcorper dolor at, luctus libero. Maecenas suscipit, nisl quis pellentesque laoreet, nibh neque congue dui, ut gravida.",
   },
   {
     id: 3,
@@ -50,7 +50,7 @@ const reviews: Review[] = [
     imageUrl: personImage,
     rating: 5,
     comment:
-      "Our Client ReviewRobert FoxRobert FoxRobert Fox Customer Customer Customer “Good Experience” “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id augue viverra, ullamcorper dolor at, luctus libero. Maecenas suscipit, nisl quis pellentesque laoreet, nibh neque congue dui, ut gravida."
+      "Our Client ReviewRobert FoxRobert FoxRobert Fox Customer Customer Customer “Good Experience” “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id augue viverra, ullamcorper dolor at, luctus libero. Maecenas suscipit, nisl quis pellentesque laoreet, nibh neque congue dui, ut gravida.",
   },
   {
     id: 4,
@@ -59,7 +59,7 @@ const reviews: Review[] = [
     imageUrl: personImage,
     rating: 5,
     comment:
-      "Our Client ReviewRobert FoxRobert FoxRobert Fox Customer Customer Customer “Good Experience” “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id augue viverra, ullamcorper dolor at, luctus libero. Maecenas suscipit, nisl quis pellentesque laoreet, nibh neque congue dui, ut gravida."
+      "Our Client ReviewRobert FoxRobert FoxRobert Fox Customer Customer Customer “Good Experience” “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id augue viverra, ullamcorper dolor at, luctus libero. Maecenas suscipit, nisl quis pellentesque laoreet, nibh neque congue dui, ut gravida.",
   },
   {
     id: 5,
@@ -68,7 +68,7 @@ const reviews: Review[] = [
     imageUrl: personImage,
     rating: 4,
     comment:
-      "Our Client ReviewRobert FoxRobert FoxRobert Fox Customer Customer Customer “Good Experience” “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id augue viverra, ullamcorper dolor at, luctus libero. Maecenas suscipit, nisl quis pellentesque laoreet, nibh neque congue dui, ut gravida."
+      "Our Client ReviewRobert FoxRobert FoxRobert Fox Customer Customer Customer “Good Experience” “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id augue viverra, ullamcorper dolor at, luctus libero. Maecenas suscipit, nisl quis pellentesque laoreet, nibh neque congue dui, ut gravida.",
   },
   {
     id: 6,
@@ -77,7 +77,7 @@ const reviews: Review[] = [
     imageUrl: personImage,
     rating: 5,
     comment:
-      "Our Client ReviewRobert FoxRobert FoxRobert Fox Customer Customer Customer “Good Experience” “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id augue viverra, ullamcorper dolor at, luctus libero. Maecenas suscipit, nisl quis pellentesque laoreet, nibh neque congue dui, ut gravida."
+      "Our Client ReviewRobert FoxRobert FoxRobert Fox Customer Customer Customer “Good Experience” “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id augue viverra, ullamcorper dolor at, luctus libero. Maecenas suscipit, nisl quis pellentesque laoreet, nibh neque congue dui, ut gravida.",
   },
 ];
 
@@ -130,7 +130,9 @@ const ClientReview: React.FC = () => {
                       <CardTitle className="text-base font-medium text-[#212121] leading-[120%]">
                         {review.name}
                       </CardTitle>
-                      <p className="text-[14px] font-medium text-[#4E4E4E] leading-[120%]">{review.role}</p>
+                      <p className="text-[14px] font-medium text-[#4E4E4E] leading-[120%]">
+                        {review.role}
+                      </p>
                     </div>
                   </div>
                   <div className="flex flex-col gap-1">

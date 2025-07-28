@@ -1,5 +1,5 @@
 import Image from "next/image";
-import bespokeImage from "@/public/images/bespoke.png";
+import bespokeImage from "@/Public/images/bespoke.png";
 
 const BespokeSection = () => {
   return (
