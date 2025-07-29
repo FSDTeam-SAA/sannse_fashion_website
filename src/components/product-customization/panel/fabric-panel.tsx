@@ -247,7 +247,10 @@ export function FabricPanel() {
                 }
               >
                 <Image
-                  src={fabric.image || ""}
+                  src={
+                    fabric.image ||
+                    "https://images.pexels.com/photos/28216688/pexels-photo-28216688.png"
+                  }
                   alt={fabric.name}
                   width={100}
                   height={100}

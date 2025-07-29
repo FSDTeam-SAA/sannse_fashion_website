@@ -201,7 +201,7 @@ export function StylePanel() {
             {styleCategories.map((category) => (
               <div
                 key={category.id}
-                className={`rounded-lg p-2 cursor-pointer transition-colors w-[164px] h-[144px] ${
+                className={`rounded-lg p-2 cursor-pointer transition-colors w-[164px] h-[144px] border ${
                   currentCategory === category.id
                     ? "bg-pink-200 border-2 border-pink-300"
                     : " hover:bg-pink-200"
@@ -209,7 +209,7 @@ export function StylePanel() {
                 onClick={() => setCurrentCategory(category.id)}
               >
                 <div className="flex items-center flex-col justify-center h-full">
-                  <div className="rounded-lg flex items-center justify-center mr-3">
+                  <div className="rounded-lg flex items-center justify-center mr-3 ">
                     <Image
                       width={60}
                       height={87}
@@ -234,7 +234,7 @@ export function StylePanel() {
               <h2 className="text-2xl font-bold text-gray-900 mb-6">
                 {getCategoryDisplayName(currentCategory)}
               </h2>
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-2 gap-3">
                 {(styleOptions[currentCategory] || []).map((option) => (
                   <div
                     key={option.id}
@@ -242,17 +242,20 @@ export function StylePanel() {
                     onClick={() => handleStyleSelect(option, currentCategory)}
                   >
                     <div
-                      className={`border rounded-lg p-6 transition-all duration-200 ${
+                      className={`border rounded-lg p-2 transition-all duration-200 ${
                         isOptionSelected(option.id, currentCategory)
-                          ? "border-pink-400 bg-pink-50 shadow-md"
+                          ? "border-pink-400 bg-[#FDE8E9] shadow-md"
                           : "border-gray-200 bg-white group-hover:border-gray-400 group-hover:shadow-sm"
                       }`}
                     >
-                      <div className="flex flex-col items-center">
+                      <div className="flex flex-col items-center ">
                         <Image
                           width={100}
                           height={100}
-                          src={option.icon || "/placeholder.svg"}
+                          src={
+                            option.icon ||
+                            "https://images.pexels.com/photos/28216688/pexels-photo-28216688.png"
+                          }
                           alt={option.name}
                           className="w-[100px] h-[100px] object-contain mb-4"
                         />

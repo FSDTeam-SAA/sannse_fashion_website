@@ -34,14 +34,18 @@ export function ConfigurationSummary() {
               className="bg-white rounded-lg p-1 border text-center min-w-20 flex-shrink-0"
             >
               {/* Visual representation */}
+              {/* Fabric  */}
               {item.color &&
                 (item.image ? (
                   <Image
-                    src={item.image}
+                    src={
+                      item.image ||
+                      "https://images.pexels.com/photos/28216688/pexels-photo-28216688.png"
+                    }
                     alt={item.name}
                     width={100}
                     height={100}
-                    className="  mx-auto mb-2 rounded-md"
+                    className="mx-auto mb-2 rounded-md"
                   />
                 ) : (
                   <div
@@ -49,14 +53,36 @@ export function ConfigurationSummary() {
                     style={{ backgroundColor: item.color }}
                   />
                 ))}
+
+              {/* styles */}
               {item.icon && !item.color && (
                 <div className="w-20 h-20 mx-auto mb-2">
                   <Image
                     width={32}
                     height={32}
-                    src={item.icon || "/placeholder.svg"}
+                    src={
+                      item.icon ||
+                      item.image ||
+                      "https://images.pexels.com/photos/28216688/pexels-photo-28216688.png"
+                    }
                     alt={item.name}
                     className="w-full h-full object-contain"
+                  />
+                </div>
+              )}
+
+              {/* Accents  */}
+              {!item.icon && !item.color && (
+                <div className="!w-26 h-20 mx-auto mb-2">
+                  <Image
+                    width={100}
+                    height={100}
+                    src={
+                      item.image ||
+                      "https://images.pexels.com/photos/28216688/pexels-photo-28216688.png"
+                    }
+                    alt={item.name}
+                    className="w-full px-4 h-full object-contain"
                   />
                 </div>
               )}
