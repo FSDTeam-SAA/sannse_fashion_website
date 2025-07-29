@@ -13,6 +13,8 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import logoImage from "@/Public/images/logo.svg";
+import Image from "next/image";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -104,7 +106,15 @@ export default function Navbar() {
                 isScrolled ? "text-xl" : "text-2xl"
               }`}
             >
-              SAN<span className="text-red-500">N</span>SE
+              <div className="w-[156px] h-[41px] m-5">
+                <Image
+                  src={logoImage}
+                  width={200}
+                  height={200}
+                  alt="logoImage"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </Link>
           </div>
           {/* Desktop Navigation */}

@@ -211,6 +211,7 @@ export function FabricPanel() {
           ? fabric.image
           : fabric.image.src
         : undefined,
+      material: fabric.material,
     });
   };
 

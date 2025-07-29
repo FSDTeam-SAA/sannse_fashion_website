@@ -26,12 +26,12 @@ export function ConfigurationSummary() {
       <h3 className="text-sm font-medium text-gray-700 mb-3">
         Configuration Summary
       </h3>
-      <ScrollArea className="h-32">
+      <ScrollArea className="h-36">
         <div className="flex gap-2 pb-2">
           {configuration.map((item) => (
             <div
               key={`${item.type}-${item.id}`}
-              className="bg-pink-100 rounded-lg p-2 text-center min-w-20 flex-shrink-0"
+              className="bg-white rounded-lg p-1 border text-center min-w-20 flex-shrink-0"
             >
               {/* Visual representation */}
               {item.color &&
@@ -50,7 +50,7 @@ export function ConfigurationSummary() {
                   />
                 ))}
               {item.icon && !item.color && (
-                <div className="w-8 h-8 mx-auto mb-2">
+                <div className="w-20 h-20 mx-auto mb-2">
                   <Image
                     width={32}
                     height={32}
@@ -62,6 +62,17 @@ export function ConfigurationSummary() {
               )}
 
               {/* Label */}
+              <div className="flex justify-between items-center text-xs font-medium">
+                {" "}
+                <h3 className="text-xs font-medium text-gray-500">
+                  {item.material}
+                </h3>
+                {item.price && (
+                  <h3 className="text-xs font-medium text-gray-500">
+                    {item.price ? `$${item.price.toFixed(2)}` : "Free"}
+                  </h3>
+                )}
+              </div>
               <div className="text-xs font-medium text-gray-800 truncate">
                 {item.name}
               </div>
