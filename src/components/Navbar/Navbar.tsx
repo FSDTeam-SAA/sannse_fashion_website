@@ -92,7 +92,7 @@ export default function Navbar() {
           : "bg-[#000000] border-gray-800"
       }`}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 lg:px-0 md:pr-4">
         <div
           className={`flex items-center justify-between transition-all duration-300 ${
             isScrolled ? "h-[70px]" : "h-[88px]"
@@ -187,7 +187,7 @@ export default function Navbar() {
                 FAQ
               </Link>
               <Link
-                href="/contact"
+                href="/contact-us"
                 className={`text-white hover:text-gray-300 px-3 py-2 text-sm font-medium transition-colors min-w-[60px] ${
                   pathname === "/contact"
                     ? "underline decoration-red-500 decoration-2 underline-offset-4"
@@ -362,7 +362,7 @@ export default function Navbar() {
                     FAQ
                   </Link>
                   <Link
-                    href="/contact"
+                    href="/contact-us"
                     className={`text-white hover:text-gray-300 py-2 text-lg font-medium transition-colors ${
                       pathname === "/contact"
                         ? "underline decoration-red-500 decoration-2 underline-offset-4"

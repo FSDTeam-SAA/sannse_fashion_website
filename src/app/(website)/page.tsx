@@ -5,6 +5,8 @@ import OurProducts from './_components/OurProducts'
 import OthersProducts from './_components/OthersProducts'
 import KnowMore from './_components/KnowMore'
 import ClientReview from './_components/ClientReview'
+import HowDoesItWork from './_components/HowDoesItWork'
+import FaqSection from './_components/FaqSection'
 
 export default function page() {
   return (
@@ -15,6 +17,8 @@ export default function page() {
         <KnowMore />
         <OthersProducts />
         <ClientReview />
+        <HowDoesItWork />
+        <FaqSection />
     </div>
   )
 }
