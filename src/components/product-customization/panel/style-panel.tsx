@@ -1,32 +1,50 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { useCustomization } from "@/components/product-customization/customization-provider";
 import Image from "next/image";
+import { useCustomization } from "@/components/product-customization/customization-provider";
+
+import styleImg from "@/Public/assets/product/style/group/Group_1000001780-removebg-preview.svg";
+import fitImg from "@/Public/assets/product/style/group/858-removebg-preview.svg";
+import lengthImg from "@/Public/assets/product/style/group/88-removebg-preview.svg";
+import sleeveBtnImg from "@/Public/assets/product/style/group/548-removebg-preview 1.svg";
+import backStyleImg from "@/Public/assets/product/style/group/55888-removebg-preview.svg";
+import bPocketImg from "@/Public/assets/product/style/group/g5-removebg-preview.svg";
+import pocketImg from "@/Public/assets/product/style/group/54578-removebg-preview.svg";
+import buttonImg1 from "@/Public/assets/product/style/group/Screenshot 2025-05-29 123446.svg";
+import buttonImg2 from "@/Public/assets/product/style/group/Screenshot 2025-05-29 122752.svg";
+import buttonImg3 from "@/Public/assets/product/style/group/Screenshot 2025-05-29 123451.svg";
+import buttonImg4 from "@/Public/assets/product/style/group/Screenshot 2025-05-29 123543.svg";
+
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const styleCategories = [
-  { id: "style", name: "Style", icon: "/placeholder.svg?height=60&width=60" },
-  { id: "fit", name: "Fit", icon: "/placeholder.svg?height=60&width=60" },
-  { id: "length", name: "Length", icon: "/placeholder.svg?height=60&width=60" },
+  {
+    id: "style",
+    name: "Style",
+    icon: styleImg,
+  },
+  { id: "fit", name: "Fit", icon: fitImg },
+  { id: "length", name: "Length", icon: lengthImg },
   {
     id: "sleeve-buttons",
     name: "Sleeve Buttons",
-    icon: "/placeholder.svg?height=60&width=60",
+    icon: sleeveBtnImg,
   },
   {
     id: "back-style",
     name: "Back Style",
-    icon: "/placeholder.svg?height=60&width=60",
+    icon: backStyleImg,
   },
   {
     id: "breast-pocket",
     name: "Breast Pocket",
-    icon: "/placeholder.svg?height=60&width=60",
+    icon: bPocketImg,
   },
   {
     id: "pocket-style",
     name: "Pocket Style",
-    icon: "/placeholder.svg?height=60&width=60",
+    icon: pocketImg,
   },
 ];
 
@@ -35,22 +53,22 @@ const styleOptions: Record<string, any[]> = {
     {
       id: "sb1",
       name: "Single-breasted 1 button",
-      icon: "/placeholder.svg?height=80&width=80",
+      icon: buttonImg1,
     },
     {
       id: "sb6",
       name: "Single-breasted 6 button",
-      icon: "/placeholder.svg?height=80&width=80",
+      icon: buttonImg4,
     },
     {
       id: "sb3",
       name: "Single-breasted 3 button",
-      icon: "/placeholder.svg?height=80&width=80",
+      icon: buttonImg3,
     },
     {
       id: "sb2",
       name: "Single-breasted 2 button",
-      icon: "/placeholder.svg?height=80&width=80",
+      icon: buttonImg2,
     },
   ],
   fit: [
@@ -77,11 +95,78 @@ const styleOptions: Record<string, any[]> = {
       icon: "/placeholder.svg?height=80&width=80",
     },
   ],
+  "sleeve-buttons": [
+    {
+      id: "no-buttons",
+      name: "No Buttons",
+      icon: "/placeholder.svg?height=80&width=80",
+    },
+    {
+      id: "functional-buttons",
+      name: "Functional Buttons",
+      icon: "/placeholder.svg?height=80&width=80",
+    },
+  ],
+  "back-style": [
+    {
+      id: "no-vent",
+      name: "No Vent",
+      icon: "/placeholder.svg?height=80&width=80",
+    },
+    {
+      id: "center-vent",
+      name: "Center Vent",
+      icon: "/placeholder.svg?height=80&width=80",
+    },
+    {
+      id: "side-vents",
+      name: "Side Vents",
+      icon: "/placeholder.svg?height=80&width=80",
+    },
+  ],
+  "breast-pocket": [
+    {
+      id: "no-pocket",
+      name: "No Pocket",
+      icon: "/placeholder.svg?height=80&width=80",
+    },
+    {
+      id: "patch-pocket",
+      name: "Patch Pocket",
+      icon: "/placeholder.svg?height=80&width=80",
+    },
+    {
+      id: "welt-pocket",
+      name: "Welt Pocket",
+      icon: "/placeholder.svg?height=80&width=80",
+    },
+  ],
+  "pocket-style": [
+    {
+      id: "flap-pockets",
+      name: "Flap Pockets",
+      icon: "/placeholder.svg?height=80&width=80",
+    },
+    {
+      id: "welt-pockets",
+      name: "Welt Pockets",
+      icon: "/placeholder.svg?height=80&width=80",
+    },
+    {
+      id: "patch-pockets",
+      name: "Patch Pockets",
+      icon: "/placeholder.svg?height=80&width=80",
+    },
+  ],
 };
 
 export function StylePanel() {
-  const { currentCategory, setCurrentCategory, addToConfiguration } =
-    useCustomization();
+  const {
+    currentCategory,
+    setCurrentCategory,
+    addToConfiguration,
+    configuration,
+  } = useCustomization();
 
   const handleStyleSelect = (option: any, category: string) => {
     addToConfiguration({
@@ -93,61 +178,108 @@ export function StylePanel() {
     });
   };
 
-  // Show categories
-  if (!currentCategory) {
-    return (
-      <div className="p-4 space-y-3">
-        {styleCategories.map((category) => (
-          <div
-            key={category.id}
-            className="bg-pink-100 rounded-lg p-4 cursor-pointer hover:bg-pink-200 transition-colors"
-            onClick={() => setCurrentCategory(category.id)}
-          >
-            <div className="flex items-center">
-              <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center mr-3">
-                <Image
-                  width={60}
-                  height={60}
-                  src={category.icon || "/placeholder.svg"}
-                  alt={category.name}
-                  className="w-8 h-8"
-                />
-              </div>
-              <div className="font-medium text-gray-800">{category.name}</div>
-            </div>
-          </div>
-        ))}
-      </div>
-    );
-  }
+  const getCategoryDisplayName = (categoryId: string) => {
+    const category = styleCategories.find((cat) => cat.id === categoryId);
+    return category ? category.name : categoryId;
+  };
 
-  // Show options for selected category
-  const options = styleOptions[currentCategory] || [];
+  const isOptionSelected = (optionId: string, category: string) => {
+    return configuration.some(
+      (item) =>
+        item.type === "style" &&
+        item.category === category &&
+        item.id === optionId
+    );
+  };
 
   return (
-    <div className="p-4">
-      <div className="grid grid-cols-2 gap-4">
-        {options.map((option) => (
-          <div
-            key={option.id}
-            className="cursor-pointer group"
-            onClick={() => handleStyleSelect(option, currentCategory)}
-          >
-            <div className="bg-white border border-gray-200 rounded-lg p-4 group-hover:border-gray-400 transition-colors">
-              <Image
-                width={80}
-                height={80}
-                src={option.icon || "/placeholder.svg"}
-                alt={option.name}
-                className="w-full h-20 object-contain mb-2"
-              />
-              <div className="text-sm font-medium text-center">
-                {option.name}
+    <ScrollArea className="h-[90vh] *:no-scrollbar flex">
+      <div className="flex h-full w-full">
+        {/* Left Panel - Categories */}
+        <div className="w-[200px] bg-gray-50 border-r border-gray-200 overflow-y-auto">
+          <div className="p-4 space-y-3">
+            {styleCategories.map((category) => (
+              <div
+                key={category.id}
+                className={`rounded-lg p-2 cursor-pointer transition-colors w-[164px] h-[144px] border ${
+                  currentCategory === category.id
+                    ? "bg-pink-200 border-2 border-pink-300"
+                    : " hover:bg-pink-200"
+                }`}
+                onClick={() => setCurrentCategory(category.id)}
+              >
+                <div className="flex items-center flex-col justify-center h-full">
+                  <div className="rounded-lg flex items-center justify-center mr-3 ">
+                    <Image
+                      width={60}
+                      height={87}
+                      src={category.icon || "/placeholder.svg"}
+                      alt={category.name}
+                      className="w-[60px] h-[87px]"
+                    />
+                  </div>
+                  <div className="font-medium text-gray-800 text-center">
+                    {category.name}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Right Panel - Options */}
+        <div className="flex-1 bg-white">
+          {currentCategory ? (
+            <div className="p-6">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                {getCategoryDisplayName(currentCategory)}
+              </h2>
+              <div className="grid grid-cols-2 gap-3">
+                {(styleOptions[currentCategory] || []).map((option) => (
+                  <div
+                    key={option.id}
+                    className="cursor-pointer group"
+                    onClick={() => handleStyleSelect(option, currentCategory)}
+                  >
+                    <div
+                      className={`border rounded-lg p-2 transition-all duration-200 ${
+                        isOptionSelected(option.id, currentCategory)
+                          ? "border-pink-400 bg-[#FDE8E9] shadow-md"
+                          : "border-gray-200 bg-white group-hover:border-gray-400 group-hover:shadow-sm"
+                      }`}
+                    >
+                      <div className="flex flex-col items-center ">
+                        <Image
+                          width={100}
+                          height={100}
+                          src={
+                            option.icon ||
+                            "https://images.pexels.com/photos/28216688/pexels-photo-28216688.png"
+                          }
+                          alt={option.name}
+                          className="w-[100px] h-[100px] object-contain mb-4"
+                        />
+                        <div className="text-sm font-medium text-center text-gray-800">
+                          {option.name}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-          </div>
-        ))}
+          ) : (
+            <div className="flex items-center justify-center h-full">
+              <div className="text-center text-gray-500">
+                <h3 className="text-lg font-medium mb-2">
+                  Select a Style Category
+                </h3>
+                <p>Choose a category from the left to see available options</p>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </ScrollArea>
   );
 }

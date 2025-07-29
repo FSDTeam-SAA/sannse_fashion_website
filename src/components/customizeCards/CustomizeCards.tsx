@@ -30,7 +30,7 @@ const CustomizeCards: React.FC<CustomizeCardProps> = ({
       }  rounded-lg`}
     >
       {/* Image Section */}
-      <div className="w-full md:w-1/2 rounded-lg overflow-hidden h-[400px]">
+      <div className="w-full md:w-1/2 rounded-lg overflow-hidden lg:h-[400px]">
         <Image
           src={imageUrl}
           alt={altText}
@@ -41,8 +41,8 @@ const CustomizeCards: React.FC<CustomizeCardProps> = ({
       </div>
 
       {/* Text Section */}
-      <div className="w-full md:w-1/2 h-[400px] flex flex-col justify-center p-6 rounded-lg">
-        <h2 className="lg:text-[32px] md:text-[28px] text-[20px] font-semibold text-[#212121] mb-5 leading-[120%]">{title}</h2>
+      <div className="w-full md:w-1/2   lg:h-[400px] flex flex-col justify-center lg:p-6 rounded-lg">
+        <h2 className="lg:text-[40px] md:text-[30px] text-[28px] font-semibold leading-[120%] text-[#000000] mb-[40px]">{title}</h2>
         <p className="text-[#595959] lg:text-base  md:text-base text-sm leading-[150%] mb-5">{description}</p>
         <button
           onClick={onButtonClick}

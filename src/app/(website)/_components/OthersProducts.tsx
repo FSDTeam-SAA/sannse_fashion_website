@@ -8,6 +8,7 @@ import shirt2 from "@/Public/images/jacketProduct.png";
 import shirt3 from "@/Public/images/jacketProduct.png";
 import OtherProductCard from "@/components/productCard/OtherProductCard";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 export type Product = {
   id: number;
   title: string;
@@ -96,19 +97,21 @@ const products: Product[] = [
 
 const OthersProducts = () => {
   return (
-    <div className="container mx-auto py-16">
-      <h1 className="lg:text-[40px] md:text-[30px] text-[20px] font-semibold leading-[120%] text-[#000000] mb-[40px]">
+    <div className="container mx-auto py-16 px-4 lg:px-0 md:px-0">
+      <h1 className="lg:text-[40px] md:text-[30px] text-[28px] font-semibold leading-[120%] text-[#000000] mb-[40px]">
         Others Products
       </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-[30px] place-items-center">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[30px] place-items-center">
         {products.map((product) => (
           <OtherProductCard key={product.id} product={product} />
         ))}
       </div>
       <div className="p-4 flex justify-center items-center mt-5">
-        <Button className="w-[202px] h-[51px] flex items-center gap-2">
-          View All Products
-        </Button>
+        <Link href="/other-product">
+          <Button className="w-[202px] h-[51px] flex items-center gap-2">
+            View All Products
+          </Button>
+        </Link>
       </div>
     </div>
   );

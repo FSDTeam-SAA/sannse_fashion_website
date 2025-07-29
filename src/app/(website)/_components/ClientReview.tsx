@@ -99,8 +99,8 @@ const ClientReview: React.FC = () => {
   }, [api]);
 
   return (
-    <div className="container mx-auto py-12">
-      <h2 className="lg:text-[40px] md:text-[30px] text-[20px] font-semibold leading-[120%] text-[#000000] mb-[40px]">
+    <div className="container mx-auto lg:py-12 px-4 lg:px-0 md:px-0">
+      <h2 className="lg:text-[40px] md:text-[30px] text-[28px] font-semibold leading-[120%] text-[#000000] mb-[40px]">
         Our Client Review
       </h2>
       <Carousel
@@ -114,7 +114,7 @@ const ClientReview: React.FC = () => {
       >
         <CarouselContent>
           {reviews.map((review) => (
-            <CarouselItem key={review.id} className="basis-1/3 md:basis-1/3">
+            <CarouselItem key={review.id} className="w-full basis-full sm:basis-full md:basis-1/2 lg:basis-1/3">
               <Card className="w-full bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300">
                 <div className="flex justify-between gap-4 p-4">
                   <div className="flex gap-3 items-center">

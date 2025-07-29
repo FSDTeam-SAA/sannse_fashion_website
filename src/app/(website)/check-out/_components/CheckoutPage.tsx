@@ -60,12 +60,12 @@ export default function CartPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-50 p-4">
-        <div className="max-w-md mx-auto animate-pulse space-y-4">
-          <div className="h-6 bg-gray-200 rounded w-1/2 mb-6"></div>
-          <div className="h-24 bg-gray-200 rounded-lg"></div>
-          <div className="h-24 bg-gray-200 rounded-lg"></div>
-          <div className="h-32 bg-gray-200 rounded-lg"></div>
+      <div className="min-h-screen bg-gray-50 p-4 sm:p-6">
+        <div className="max-w-md mx-auto animate-pulse space-y-3 sm:space-y-4">
+          <div className="h-6 bg-gray-200 rounded w-1/2 mb-4 sm:mb-6"></div>
+          <div className="h-20 sm:h-24 bg-gray-200 rounded-lg"></div>
+          <div className="h-20 sm:h-24 bg-gray-200 rounded-lg"></div>
+          <div className="h-24 sm:h-32 bg-gray-200 rounded-lg"></div>
         </div>
       </div>
     );
@@ -73,11 +73,11 @@ export default function CartPage() {
 
   if (cartItems.length === 0) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-        <div className="text-center max-w-md mx-auto">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4 sm:p-6">
+        <div className="text-center max-w-md mx-auto py-8 sm:py-10">
           <div className="mb-4">
             <svg
-              className="mx-auto h-12 w-12 text-gray-400"
+              className="mx-auto h-10 sm:h-12 w-10 sm:w-12 text-gray-400"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -90,13 +90,13 @@ export default function CartPage() {
               />
             </svg>
           </div>
-          <h3 className="text-lg font-medium text-gray-900 mb-2">
+          <h3 className="text-base sm:text-lg font-medium text-gray-900 mb-2">
             Your cart is empty
           </h3>
-          <p className="text-gray-500 mb-6">
+          <p className="text-xs sm:text-sm text-gray-500 mb-4 sm:mb-6">
             Add some items to your cart to get started.
           </p>
-          <button className="bg-red-500 hover:bg-red-600 text-white font-medium py-3 px-6 rounded-lg transition-colors">
+          <button className="bg-red-500 hover:bg-red-600 text-white font-medium py-2 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors">
             Continue Shopping
           </button>
         </div>
@@ -105,21 +105,21 @@ export default function CartPage() {
   }
 
   return (
-    <div className="lg:my-[83px] md:py-[70px] py-[65px]">
-      <div className="w-[70%] mx-auto  min-h-screen">
-        <div className="p-4">
-          <h1 className="lg:text-[32px] md:text-[28px] text-[20px] text-[#212121] leading-[120%] font-semibold mb-4">
+    <div className="py-8 sm:py-10 md:py-[70px] lg:my-[83px]">
+      <div className="w-full sm:w-[90%] md:w-[80%] lg:w-[70%] mx-auto min-h-screen">
+        <div className="p-3 sm:p-4">
+          <h1 className="text-[18px] sm:text-[20px] md:text-[28px] lg:text-[32px] text-[#212121] leading-[120%] font-semibold mb-3 sm:mb-4">
             Review your cart
           </h1>
         </div>
 
         <div className="bg-[#FDE8E9] rounded-[12px]">
-          <div className="p-6 space-y-4">
+          <div className="p-4 sm:p-6 space-y-3 sm:space-y-4">
             {cartItems.map((item) => (
-              <div key={item.id} className="bg-[#FDDDDE] rounded-lg p-4">
-                <div className="flex items-center gap-6">
+              <div key={item.id} className="bg-[#FDDDDE] rounded-lg p-3 sm:p-4">
+                <div className="flex items-center gap-4 sm:gap-6">
                   {/* Product Image */}
-                  <div className="w-16 h-20 bg-gray-200 rounded-lg overflow-hidden flex-shrink-0">
+                  <div className="w-12 h-16 sm:w-16 sm:h-20 bg-gray-200 rounded-lg overflow-hidden flex-shrink-0">
                     <Image
                       src={
                         errorImages[item.id]
@@ -127,8 +127,8 @@ export default function CartPage() {
                           : item.image
                       }
                       alt={item.title}
-                      width={64}
-                      height={80}
+                      width={48}
+                      height={64}
                       className="w-full h-full object-cover"
                       onError={() => handleImageError(item.id)}
                     />
@@ -136,13 +136,13 @@ export default function CartPage() {
 
                   {/* Product Info */}
                   <div className="flex-1 space-y-1">
-                    <h3 className="text-[20px] font-semibold leading-[120%] text-[#212121]">
+                    <h3 className="text-base sm:text-[20px] font-semibold leading-[120%] text-[#212121]">
                       {item.title}
                     </h3>
-                    <p className="text-xs text-gray-600">
-                      {item.size ? `Size: ${item.size}` : "No size selected"}
+                    <p className="text-[10px] sm:text-xs text-gray-600">
+                      {item.size ? `Size: ${item.size}` : ""}
                     </p>
-                    <div className="text-lg font-semibold text-gray-900">
+                    <div className="text-base sm:text-lg font-semibold text-gray-900">
                       ${item.price}
                     </div>
                   </div>
@@ -151,65 +151,67 @@ export default function CartPage() {
             ))}
           </div>
 
-          <div className="p-4 space-y-4">
-            <div className="flex justify-between text-sm">
-              <span className="text-[20px] font-semibold leading-[120%] text-[#212121]">
+          <div className="p-3 sm:p-4 space-y-3 sm:space-y-4">
+            <div className="flex justify-between text-xs sm:text-sm">
+              <span className="text-base sm:text-[20px] font-semibold leading-[120%] text-[#212121]">
                 Subtotal
               </span>
-              <span className="text-[20px] font-semibold leading-[120%] text-[#212121]">
+              <span className="text-base sm:text-[20px] font-semibold leading-[120%] text-[#212121]">
                 ${subtotal.toFixed(2)}
               </span>
             </div>
-            <div className="flex justify-between text-sm">
-              <span className="text-[20px] font-semibold leading-[120%] text-[#212121]">
+            <div className="flex justify-between text-xs sm:text-sm">
+              <span className="text-base sm:text-[20px] font-semibold leading-[120%] text-[#212121]">
                 Sales Tax
               </span>
-              <span className="text-[20px] font-semibold leading-[120%] text-[#212121]">
+              <span className="text-base sm:text-[20px] font-semibold leading-[120%] text-[#212121]">
                 ${salesTax.toFixed(2)}
               </span>
             </div>
-            <div className="flex justify-between text-sm">
-              <span className="text-[20px] font-semibold leading-[120%] text-[#212121]">
+            <div className="flex justify-between text-xs sm:text-sm">
+              <span className="text-base sm:text-[20px] font-semibold leading-[120%] text-[#212121]">
                 Total Items
               </span>
-              <span className="text-[20px] font-semibold leading-[120%] text-[#212121]">
+              <span className="text-base sm:text-[20px] font-semibold leading-[120%] text-[#212121]">
                 {totalItems}
               </span>
             </div>
-            <div className="flex justify-between text-sm">
-              <span className="text-[20px] font-semibold leading-[120%] text-[#212121]">
+            <div className="flex justify-between text-xs sm:text-sm">
+              <span className="text-base sm:text-[20px] font-semibold leading-[120%] text-[#212121]">
                 Shipping costs
               </span>
-              <span className="text-[20px] font-semibold leading-[120%] text-[#212121]">
+              <span className="text-base sm:text-[20px] font-semibold leading-[120%] text-[#212121]">
                 ${shippingCosts.toFixed(2)}
               </span>
             </div>
             <hr className="border-gray-200" />
-            <div className="flex justify-between text-lg font-semibold">
-              <span className="text-[20px] font-semibold leading-[120%] text-[#212121]">
+            <div className="flex justify-between text-base sm:text-lg font-semibold">
+              <span className="text-base sm:text-[20px] font-semibold leading-[120%] text-[#212121]">
                 Total
               </span>
-              <span className="text-[20px] font-semibold leading-[120%] text-[#212121]">
+              <span className="text-base sm:text-[20px] font-semibold leading-[120%] text-[#212121]">
                 ${total.toFixed(2)}
               </span>
             </div>
           </div>
 
-          <div className="p-4 space-y-3">
-            <button className="w-full border border-gray-500 rounded-lg p-4 flex items-center justify-between hover:border-gray-300 transition-colors">
-              <div className="flex items-center gap-3">
-                <div className="w-4 h-4 border-2 border-gray-300 rounded-full flex items-center justify-center">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+          <div className="p-3 sm:p-4 space-y-2 sm:space-y-3">
+            <button className="w-full border border-gray-500 rounded-lg p-3 sm:p-4 flex items-center justify-between hover:border-gray-300 transition-colors">
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="w-3 h-3 sm:w-4 sm:h-4 border-2 border-gray-300 rounded-full flex items-center justify-center">
+                  <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-blue-500 rounded-full"></div>
                 </div>
-                <span className="text-base leading-[120%] font-medium">
+                <span className="text-sm sm:text-base leading-[120%] font-medium">
                   Pay With Stripe
                 </span>
               </div>
-              <div className="text-blue-600 font-bold text-lg">stripe</div>
+              <div className="text-blue-600 font-bold text-base sm:text-lg">
+                stripe
+              </div>
             </button>
 
             <button
-              className="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-4 rounded-lg transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
+              className="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-3 sm:py-4 rounded-lg transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
               disabled={cartItems.length === 0}
               onClick={() => alert("Proceeding to checkout...")}
             >

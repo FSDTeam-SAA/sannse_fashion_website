@@ -73,44 +73,45 @@ export default function FaqPage() {
   ];
 
   return (
-    <div className="flex gap-[30px] container mx-auto p-6 bg-white">
-      {/* Product Image */}
-      <div className="w-1/3 pr-6">
-        <div className="rounded-lg overflow-hidden">
-          <Image
-            src="/_next/static/media/productImage.6f417e8d.png" // Replace with your image path
-            alt="Product Image"
-            width={300}
-            height={300} // Reduced from 400 to 300
-            className="w-full object-cover rounded-lg"
-          />
+    <div className="container mx-auto p-4 sm:p-6 bg-white lg:py-[85px] md:py-[60px] py-[50px]">
+      <div className="flex justify-center  flex-col md:flex-row gap-4 sm:gap-6 md:gap-[30px]">
+        {/* Product Image */}
+        <div className="w-full md:w-1/3 pr-0 lg:mt-6 mt-0 md:pr-6">
+          <div className="rounded-lg overflow-hidden">
+            <Image
+              src="/_next/static/media/productImage.6f417e8d.png" // Replace with your image path
+              alt="Product Image"
+              width={300}
+              height={300}
+              className="w-full h-[300px] sm:h-[350px] md:h-[400px] object-cover rounded-lg"
+            />
+          </div>
+        </div>
+
+        {/* List Section */}
+        <div className="w-full md:w-2/3">
+          <Accordion
+            type="multiple"
+            className="w-full"
+            defaultValue={[`item-${items[0]?.id}`]}
+          >
+            {items.map((item) => (
+              <AccordionItem
+                className="border-b border-gray-700 py-2 sm:py-3"
+                key={item.id}
+                value={`item-${item.id}`}
+              >
+                <AccordionTrigger className="text-[16px] sm:text-[18px] md:text-[20px] font-semibold leading-[120%] text-[#212121] hover:no-underline">
+                  {item.id}. {item.title}
+                </AccordionTrigger>
+                <AccordionContent className="text-xs sm:text-sm md:text-base font-semibold leading-[180%] text-[#212121]">
+                  {item.description}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </div>
-
-      {/* List Section */}
-      <div className="w-2/3">
-  <Accordion
-    type="multiple"
-    className="w-full"
-    defaultValue={[`item-${items[0]?.id}`]} // ✅ Open first item by default
-  >
-    {items.map((item) => (
-      <AccordionItem
-        className="border-b border-gray-700 py-3"
-        key={item.id}
-        value={`item-${item.id}`}
-      >
-        <AccordionTrigger className="text-[20px] font-semibold leading-[120%] text-[#212121] hover:no-underline">
-          {item.id}. {item.title}
-        </AccordionTrigger>
-        <AccordionContent className="text-base font-semibold leading-[180%] text-[#212121]">
-          {item.description}
-        </AccordionContent>
-      </AccordionItem>
-    ))}
-  </Accordion>
-</div>
-
     </div>
   );
 }
