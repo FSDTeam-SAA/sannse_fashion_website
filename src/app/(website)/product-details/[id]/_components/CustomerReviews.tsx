@@ -154,7 +154,7 @@ const CustomerReviews: React.FC = () => {
           <div>
             <Button
               type="submit"
-              className="bg-red-600 hover:bg-red-700 text-white px-8 py-2 rounded-md font-medium transition-colors duration-200"
+              className="bg-red-600 h-[51px] hover:bg-red-700 text-white text-lg px-10 rounded-md font-medium transition-colors duration-200"
             >
               Submit
             </Button>

@@ -52,7 +52,7 @@ const ProductDetailsContent: React.FC = () => {
   ]
 
   return (
-    <div className="container mx-auto py-6 bg-white">
+    <div className="container mx-auto py-6 bg-white px-4 lg:px-0 md:px-0">
       {/* Main Heading */}
       <div className="mb-8">
         <h1 className="lg:text-[32px] md:text-[28px] text-[20px] font-semibold leading-[120%] mb-4">

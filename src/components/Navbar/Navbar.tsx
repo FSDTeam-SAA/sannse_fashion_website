@@ -13,6 +13,8 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import logoImage from "@/Public/images/logo.svg";
+import Image from "next/image";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -90,7 +92,7 @@ export default function Navbar() {
           : "bg-[#000000] border-gray-800"
       }`}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 lg:px-0 md:pr-4">
         <div
           className={`flex items-center justify-between transition-all duration-300 ${
             isScrolled ? "h-[70px]" : "h-[88px]"
@@ -104,7 +106,15 @@ export default function Navbar() {
                 isScrolled ? "text-xl" : "text-2xl"
               }`}
             >
-              SAN<span className="text-red-500">N</span>SE
+              <div className="w-[156px] h-[41px] m-5">
+                <Image
+                  src={logoImage}
+                  width={200}
+                  height={200}
+                  alt="logoImage"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </Link>
           </div>
           {/* Desktop Navigation */}
@@ -177,7 +187,7 @@ export default function Navbar() {
                 FAQ
               </Link>
               <Link
-                href="/contact"
+                href="/contact-us"
                 className={`text-white hover:text-gray-300 px-3 py-2 text-sm font-medium transition-colors min-w-[60px] ${
                   pathname === "/contact"
                     ? "underline decoration-red-500 decoration-2 underline-offset-4"
@@ -352,7 +362,7 @@ export default function Navbar() {
                     FAQ
                   </Link>
                   <Link
-                    href="/contact"
+                    href="/contact-us"
                     className={`text-white hover:text-gray-300 py-2 text-lg font-medium transition-colors ${
                       pathname === "/contact"
                         ? "underline decoration-red-500 decoration-2 underline-offset-4"

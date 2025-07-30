@@ -13,6 +13,7 @@ export interface ConfigurationItem {
   icon?: string;
   price?: number;
   color?: string;
+  material?: string;
 }
 
 interface CustomizationState {

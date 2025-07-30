@@ -7,7 +7,7 @@ function page() {
       <div>
         <ShirtsPageHeader />
       </div>
-      <div className="lg:container mx-auto flex flex-col md:flex-row lg:gap-6 lg:my-[88px] md:my-[60px] my-[50px]">
+      <div className="lg:container mx-auto flex flex-col md:flex-row lg:gap-6 lg:my-[88px] md:my-[60px] my-[30px]">
         <div className="w-full">
           <SortingShirtsProducts />
         </div>

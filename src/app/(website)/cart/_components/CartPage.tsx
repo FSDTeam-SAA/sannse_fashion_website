@@ -60,10 +60,6 @@ export default function CartPage() {
     setCartItems((items) => items.filter((item) => item.id !== id));
   };
 
-  //   const clearCart = () => {
-  //     setCartItems([]);
-  //   };
-
   const handleImageError = (id: string | number) => {
     setErrorImages((prev) => ({ ...prev, [id]: true }));
   };
@@ -78,11 +74,11 @@ export default function CartPage() {
 
   if (isLoading) {
     return (
-      <div className="max-w-4xl mx-auto p-6 bg-white">
+      <div className="max-w-4xl mx-auto p-4 sm:p-6 bg-white">
         <div className="animate-pulse space-y-4">
-          <div className="h-8 bg-gray-200 rounded w-1/4 mb-6"></div>
-          <div className="h-32 bg-gray-200 rounded"></div>
-          <div className="h-32 bg-gray-200 rounded"></div>
+          <div className="h-8 bg-gray-200 rounded w-1/4 mb-4 sm:mb-6"></div>
+          <div className="h-24 sm:h-32 bg-gray-200 rounded"></div>
+          <div className="h-24 sm:h-32 bg-gray-200 rounded"></div>
         </div>
       </div>
     );
@@ -90,11 +86,11 @@ export default function CartPage() {
 
   if (cartItems.length === 0) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-white p-6">
-        <div className="text-center py-12">
+      <div className="min-h-screen flex items-center justify-center bg-white p-4 sm:p-6">
+        <div className="text-center py-8 sm:py-12">
           <div className="mb-4">
             <svg
-              className="mx-auto h-12 w-12 text-gray-400"
+              className="mx-auto h-10 sm:h-12 w-10 sm:w-12 text-gray-400"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -107,10 +103,10 @@ export default function CartPage() {
               />
             </svg>
           </div>
-          <h3 className="text-lg font-medium text-gray-900 mb-2">
+          <h3 className="text-base sm:text-lg font-medium text-gray-900 mb-2">
             Your cart is empty
           </h3>
-          <p className="text-gray-500">
+          <p className="text-xs sm:text-sm text-gray-500">
             Add some items to your cart to get started.
           </p>
         </div>
@@ -119,29 +115,23 @@ export default function CartPage() {
   }
 
   return (
-    <div className="container mx-auto p-6 bg-white min-h-screen lg:my-[83px] md:py-[70px] py-[65px]">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div className="container mx-auto p-4 sm:p-6 bg-white min-h-screen py-8 sm:py-[50px] md:py-[70px] lg:my-[83px]">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
         {/* Cart Items */}
-        <div className="lg:col-span-2">
+        <div className="md:col-span-2">
           <div className="flex justify-between items-center">
-            <h2 className="lg:text-[32px] md:text-[28px] text-[20px] text-[#212121] leading-[120%] font-semibold mb-5">
+            <h2 className="text-[18px] sm:text-[20px] md:text-[28px] lg:text-[32px] text-[#212121] leading-[120%] font-semibold mb-4 sm:mb-5">
               Cart Items
             </h2>
-            {/* <button
-              onClick={clearCart}
-              className="text-red-500 hover:text-red-700 text-sm font-medium"
-            >
-              Clear Cart
-            </button> */}
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             {cartItems.map((item) => (
               <div
                 key={item.id}
-                className="bg-[#FDE8E9] rounded-lg p-4 flex gap-4"
+                className="bg-[#FDE8E9] rounded-lg p-3 sm:p-4 flex gap-3 sm:gap-4"
               >
-                <div className="w-24 h-24 bg-gray-200 rounded-lg overflow-hidden flex-shrink-0">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gray-200 rounded-lg overflow-hidden flex-shrink-0">
                   <Image
                     src={
                       errorImages[item.id]
@@ -149,27 +139,22 @@ export default function CartPage() {
                         : item.image
                     }
                     alt={item.title}
-                    width={96}
-                    height={96}
+                    width={80}
+                    height={80}
                     className="w-full h-full object-cover"
                     onError={() => handleImageError(item.id)}
                   />
                 </div>
 
                 <div className="flex-1">
-                  <h3 className="text-base font-semibold leading-[120%] text-[#212121]">
+                  <h3 className="text-sm sm:text-base font-semibold leading-[120%] text-[#212121]">
                     {item.title}
                   </h3>
-                  {/* {item.size && (
-                    <p className="text-xs text-gray-600 mb-2">
-                      Size: <span className="font-medium">{item.size}</span>
-                    </p>
-                  )} */}
-                  <div className="text-[20px] font-semibold leading-[120%] text-[#212121] my-4">
+                  <div className="text-base sm:text-[20px] font-semibold leading-[120%] text-[#212121] my-2 sm:my-4">
                     ${item.price}
                   </div>
 
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2 sm:gap-3">
                     <div className="flex items-center border border-gray-300 rounded">
                       <button
                         type="button"
@@ -177,11 +162,11 @@ export default function CartPage() {
                           updateQuantity(item.id, item.quantity - 1)
                         }
                         disabled={item.quantity <= 1}
-                        className="p-1 hover:bg-gray-100 rounded-l"
+                        className="p-1 sm:p-1 hover:bg-gray-100 rounded-l"
                       >
-                        <Minus className="w-4 h-4" />
+                        <Minus className="w-3 h-3 sm:w-4 sm:h-4" />
                       </button>
-                      <span className="px-3 py-1 min-w-[40px] text-center font-medium">
+                      <span className="px-2 sm:px-3 py-1 min-w-[32px] sm:min-w-[40px] text-center font-medium text-xs sm:text-sm">
                         {item.quantity}
                       </span>
                       <button
@@ -189,17 +174,11 @@ export default function CartPage() {
                         onClick={() =>
                           updateQuantity(item.id, item.quantity + 1)
                         }
-                        className="p-1 hover:bg-gray-100 rounded-r"
+                        className="p-1 sm:p-1 hover:bg-gray-100 rounded-r"
                       >
-                        <Plus className="w-4 h-4" />
+                        <Plus className="w-3 h-3 sm:w-4 sm:h-4" />
                       </button>
                     </div>
-                    {/* <div className="text-sm text-gray-600">
-                      Total:{" "}
-                      <span className="font-semibold">
-                        ${(item.price * item.quantity).toFixed(2)}
-                      </span>
-                    </div> */}
                   </div>
                 </div>
 
@@ -209,7 +188,7 @@ export default function CartPage() {
                   className="text-gray-400 hover:text-red-500 p-1 h-fit"
                   title="Remove item"
                 >
-                  <Trash2 className="w-5 h-5" />
+                  <Trash2 className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
               </div>
             ))}
@@ -218,47 +197,47 @@ export default function CartPage() {
 
         {/* Cart Summary */}
         <div className="">
-          <h2 className="lg:text-[32px] md:text-[28px] text-[20px] text-[#212121] leading-[120%] font-semibold mb-5">
+          <h2 className="text-[18px] sm:text-[20px] md:text-[28px] lg:text-[32px] text-[#212121] leading-[120%] font-semibold mb-4 sm:mb-5">
             Cart Total
           </h2>
-          <div className="bg-[#FDE8E9] rounded-lg p-6 space-y-4">
+          <div className="bg-[#FDE8E9] rounded-lg p-4 sm:p-6 space-y-3 sm:space-y-4">
             <div className="flex justify-between">
-              <span className="text-[20px] font-semibold leading-[120%] text-[#212121]">
+              <span className="text-base sm:text-[20px] font-semibold leading-[120%] text-[#212121]">
                 Subtotal
               </span>
-              <span className="text-[20px] font-semibold leading-[120%] text-[#212121]">
+              <span className="text-base sm:text-[20px] font-semibold leading-[120%] text-[#212121]">
                 ${subtotal.toFixed(2)}
               </span>
             </div>
             <div className="flex justify-between">
-              <span className="text-[20px] font-semibold leading-[120%] text-[#212121]">
+              <span className="text-base sm:text-[20px] font-semibold leading-[120%] text-[#212121]">
                 Sales Tax
               </span>
-              <span className="text-[20px] font-semibold leading-[120%] text-[#212121]">
+              <span className="text-base sm:text-[20px] font-semibold leading-[120%] text-[#212121]">
                 ${salesTax.toFixed(2)}
               </span>
             </div>
             <div className="flex justify-between">
-              <span className="text-[20px] font-semibold leading-[120%] text-[#212121]">
+              <span className="text-base sm:text-[20px] font-semibold leading-[120%] text-[#212121]">
                 Total Items
               </span>
-              <span className="text-[20px] font-semibold leading-[120%] text-[#212121]">
+              <span className="text-base sm:text-[20px] font-semibold leading-[120%] text-[#212121]">
                 {totalItems.toString().padStart(2, "0")}
               </span>
             </div>
             <hr className="border-gray-300" />
-            <div className="flex justify-between text-lg">
-              <span className="text-[20px] font-semibold leading-[120%] text-[#212121]">
+            <div className="flex justify-between text-base sm:text-lg">
+              <span className="text-base sm:text-[20px] font-semibold leading-[120%] text-[#212121]">
                 Total
               </span>
-              <span className="text-[20px] font-semibold leading-[120%] text-[#212121]">
+              <span className="text-base sm:text-[20px] font-semibold leading-[120%] text-[#212121]">
                 ${total.toFixed(2)}
               </span>
             </div>
-            <div className="pt-10">
+            <div className="pt-6 sm:pt-10">
               <Link href="/check-out">
                 <button
-                  className="w-full bg-[#EF1A26] hover:bg-[#da4b52] text-white font-semibold py-3 px-6 rounded-lg transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
+                  className="w-full bg-[#EF1A26] hover:bg-[#da4b52] text-white font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
                   disabled={cartItems.length === 0}
                 >
                   Checkout
