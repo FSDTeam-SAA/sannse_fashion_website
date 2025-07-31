@@ -191,34 +191,35 @@ export function StylePanel() {
   };
 
   return (
-    <ScrollArea className="h-[calc(100vh-300px)] lg:h-[90vh] *:no-scrollbar flex">
-      <div className="flex flex-col lg:flex-row h-full w-full">
-        {/* Left Panel - Categories */}
-        <div className="w-full lg:w-[200px] bg-gray-50 border-b lg:border-b-0 lg:border-r border-gray-200 overflow-y-auto">
-          <div className="p-2 lg:p-4">
-            {/* Mobile: Horizontal scroll, Desktop: Vertical stack */}
-            <div className="flex lg:flex-col gap-2 lg:gap-3 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0">
+    <div className="h-full w-full flex flex-col">
+      {/* Mobile: Categories at top, Desktop: Categories on left */}
+      <div className="flex flex-col md:flex-row h-full">
+        {/* Categories Panel */}
+        <div className="w-full md:w-[200px] lg:w-[220px] bg-gray-50 border-b md:border-b-0 md:border-r border-gray-200 flex-shrink-0">
+          <div className="p-2 md:p-4">
+            {/* Mobile: Horizontal scroll with better spacing */}
+            <div className="flex md:flex-col gap-2 md:gap-3 overflow-x-auto md:overflow-x-visible pb-2 md:pb-0">
               {styleCategories.map((category) => (
                 <div
                   key={category.id}
-                  className={`rounded-lg p-2 cursor-pointer transition-colors min-w-[80px] lg:min-w-0 lg:w-[164px] h-[80px] lg:h-[144px] border flex-shrink-0 ${
+                  className={`rounded-lg p-2 md:p-3 cursor-pointer transition-all duration-200 min-w-[70px] sm:min-w-[80px] md:min-w-0 md:w-full h-[70px] sm:h-[80px] md:h-[120px] lg:h-[144px] border flex-shrink-0 ${
                     currentCategory === category.id
-                      ? "bg-gray-200 border-1 border-red-300"
-                      : " hover:bg-gray-200"
+                      ? "bg-white border-2 border-red-400 shadow-md"
+                      : "bg-white hover:bg-gray-100 border border-gray-200 hover:border-gray-300"
                   }`}
                   onClick={() => setCurrentCategory(category.id)}
                 >
                   <div className="flex items-center flex-col justify-center h-full">
-                    <div className="rounded-lg flex items-center justify-center mr-3">
+                    <div className="rounded-lg flex items-center justify-center mb-1 md:mb-2">
                       <Image
-                        width={30}
-                        height={60}
+                        width={24}
+                        height={24}
                         src={category.icon || "/placeholder.svg"}
                         alt={category.name}
-                        className="w-[30px] lg:w-[60px] h-[60px] lg:h-[87px]"
+                        className="w-[24px] h-[24px] sm:w-[30px] sm:h-[30px] md:w-[40px] md:h-[40px] lg:w-[60px] lg:h-[60px] object-contain"
                       />
                     </div>
-                    <div className="font-medium text-gray-800 text-center text-[10px] lg:text-sm leading-tight">
+                    <div className="font-medium text-gray-800 text-center text-[8px] sm:text-[10px] md:text-xs lg:text-sm leading-tight px-1">
                       {category.name}
                     </div>
                   </div>
@@ -228,64 +229,69 @@ export function StylePanel() {
           </div>
         </div>
 
-        {/* Right Panel - Options */}
-        <div className="flex-1 bg-white">
-          {currentCategory ? (
-            <div className="p-3 lg:p-6">
-              <h2 className="text-lg lg:text-2xl font-bold text-gray-900 mb-4 lg:mb-6">
-                {getCategoryDisplayName(currentCategory)}
-              </h2>
-              <div className="grid grid-cols-2 gap-3">
-                {(styleOptions[currentCategory] || []).map((option) => (
-                  <div
-                    key={option.id}
-                    className="cursor-pointer group"
-                    onClick={() => handleStyleSelect(option, currentCategory)}
-                  >
+        {/* Options Panel */}
+        <div className="flex-1 bg-white min-h-0">
+          <ScrollArea className="h-full">
+            {currentCategory ? (
+              <div className="p-3 sm:p-4 md:p-6">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6">
+                  {getCategoryDisplayName(currentCategory)}
+                </h2>
+
+                {/* Responsive grid: 2 columns on mobile, 2-3 on tablet, 2-4 on desktop */}
+                <div className="grid grid-cols-2 gap-2 sm:gap-3 md:gap-4">
+                  {(styleOptions[currentCategory] || []).map((option) => (
                     <div
-                      className={`border rounded-lg p-2 transition-all duration-200 ${
-                        isOptionSelected(option.id, currentCategory)
-                          ? "border-red-400 bg-gray-100 shadow-md"
-                          : "border-gray-200 bg-white group-hover:border-gray-400 group-hover:shadow-sm"
-                      }`}
+                      key={option.id}
+                      className="cursor-pointer group"
+                      onClick={() => handleStyleSelect(option, currentCategory)}
                     >
-                      <div className="flex flex-col items-center">
-                        <Image
-                          width={60}
-                          height={60}
-                          src={
-                            option.icon ||
-                            "https://images.pexels.com/photos/28216688/pexels-photo-28216688.png" ||
-                            "/placeholder.svg" ||
-                            "/placeholder.svg" ||
-                            "/placeholder.svg"
-                          }
-                          alt={option.name}
-                          className="w-[60px] lg:w-[100px] h-[60px] lg:h-[100px] object-contain mb-2 lg:mb-4"
-                        />
-                        <div className="text-xs lg:text-sm font-medium text-center text-gray-800 leading-tight">
-                          {option.name}
+                      <div
+                        className={`border rounded-lg p-2 sm:p-3 md:p-4 transition-all duration-200 ${
+                          isOptionSelected(option.id, currentCategory)
+                            ? "border-red-400 bg-red-50 shadow-md"
+                            : "border-gray-200 bg-white group-hover:border-gray-400 group-hover:shadow-sm"
+                        }`}
+                      >
+                        <div className="flex flex-col items-center">
+                          <div className="w-full flex justify-center mb-2 sm:mb-3 md:mb-4">
+                            <Image
+                              width={60}
+                              height={60}
+                              src={
+                                option.icon ||
+                                "https://images.pexels.com/photos/28216688/pexels-photo-28216688.png"
+                              }
+                              alt={option.name}
+                              className="w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] md:w-[80px] md:h-[80px] lg:w-[100px] lg:h-[100px] object-contain"
+                            />
+                          </div>
+                          <div className="text-[10px] sm:text-xs md:text-sm font-medium text-center text-gray-800 leading-tight px-1">
+                            {option.name}
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
-          ) : (
-            <div className="flex items-center justify-center h-full">
-              <div className="text-center text-gray-500">
-                <h3 className="text-base lg:text-lg font-medium mb-2">
-                  Select a Style Category
-                </h3>
-                <p className="text-sm">
-                  Choose a category from the left to see available options
-                </p>
+            ) : (
+              <div className="flex items-center justify-center h-full min-h-[200px] p-4">
+                <div className="text-center text-gray-500">
+                  <h3 className="text-sm sm:text-base md:text-lg font-medium mb-2">
+                    Select a Style Category
+                  </h3>
+                  <p className="text-xs sm:text-sm">
+                    Choose a category from{" "}
+                    {window.innerWidth < 768 ? "above" : "the left"} to see
+                    available options
+                  </p>
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </ScrollArea>
         </div>
       </div>
-    </ScrollArea>
+    </div>
   );
 }
