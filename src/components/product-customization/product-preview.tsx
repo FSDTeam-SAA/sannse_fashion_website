@@ -5,12 +5,12 @@ import previewImage from "@/Public/assets/product/coat.png";
 
 export function ProductPreview() {
   return (
-    <div className="mb-6 w-[402px] h-[501px] flex flex-end">
-      <div className="aspect-square bg-[#E6E6E6] rounded-lg overflow-hidden">
+    <div className="w-full max-w-[350px] lg:max-w-[402px] h-[350px] lg:h-[501px] flex justify-center">
+      <div className="aspect-square bg-[#E6E6E6] rounded-lg overflow-hidden w-full h-full">
         <Image
           width={400}
           height={400}
-          src={previewImage}
+          src={previewImage || "/placeholder.svg"}
           alt="Custom Garment Preview"
           className="w-full h-full object-cover"
         />
@@ -18,3 +18,4 @@ export function ProductPreview() {
     </div>
   );
 }
+

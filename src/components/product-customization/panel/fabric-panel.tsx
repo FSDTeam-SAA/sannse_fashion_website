@@ -3,7 +3,7 @@
 import { Search } from "lucide-react";
 import { useCustomization } from "@/components/product-customization/customization-provider";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import Image, { StaticImageData } from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import fabricImg from "@/Public/assets/product/fabrics/2284_huge_c300.png";
 import fabricImg1 from "@/Public/assets/product/fabrics/2790_huge_c300.png";
 
@@ -216,8 +216,8 @@ export function FabricPanel() {
   };
 
   return (
-    <div className="p-4">
-      <ScrollArea className="h-[90vh] *:no-scrollbar">
+    <div className="p-2 sm:p-4">
+      <ScrollArea className="h-[calc(100vh-300px)] lg:h-[90vh] *:no-scrollbar">
         {/* Search Bar */}
         <div className="relative mb-4">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
@@ -231,7 +231,7 @@ export function FabricPanel() {
         </div>
 
         {/* Fabric Grid */}
-        <div className="grid grid-cols-4 gap-2">
+        <div className="grid grid-cols-4 sm:grid-cols-5 lg:grid-cols-4 gap-2">
           {filteredFabrics.map((fabric) => (
             <div
               key={fabric.id}
@@ -249,7 +249,11 @@ export function FabricPanel() {
                 <Image
                   src={
                     fabric.image ||
-                    "https://images.pexels.com/photos/28216688/pexels-photo-28216688.png"
+                    "https://images.pexels.com/photos/28216688/pexels-photo-28216688.png" ||
+                    "/placeholder.svg" ||
+                    "/placeholder.svg" ||
+                    "/placeholder.svg" ||
+                    "/placeholder.svg"
                   }
                   alt={fabric.name}
                   width={100}
@@ -257,9 +261,11 @@ export function FabricPanel() {
                   className="w-full h-full object-cover rounded-md"
                 />
               </div>
-              <div className="mt-1 text-xs">
-                <div className="font-medium">{fabric.material}</div>
-                <div className="text-gray-600 truncate">{fabric.name}</div>
+              <div className="mt-1 text-[10px] sm:text-xs">
+                <div className="font-medium truncate">{fabric.material}</div>
+                <div className="text-gray-600 truncate text-[9px] sm:text-[10px]">
+                  {fabric.name}
+                </div>
                 <div className="font-semibold">${fabric.price}</div>
               </div>
             </div>

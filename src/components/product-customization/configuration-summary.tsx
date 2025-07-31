@@ -9,29 +9,28 @@ export function ConfigurationSummary() {
 
   if (configuration.length === 0) {
     return (
-      <div className="mb-6">
+      <div className="mb-4 lg:mb-6">
         <h3 className="text-sm font-medium text-gray-500 mb-3">
           Configuration Summary
         </h3>
-        <div className="text-sm text-gray-400 text-center py-8">
+        <div className="text-sm text-gray-400 text-center py-4 lg:py-8">
           Start customizing to see your selections here
         </div>
       </div>
     );
   }
-  console.log(configuration);
 
   return (
     <div className="">
       <h3 className="text-sm font-medium text-gray-700 mb-3">
         Configuration Summary
       </h3>
-      <ScrollArea className="h-36">
-        <div className="flex gap-2 pb-2">
+      <ScrollArea className="h-24 lg:h-36">
+        <div className="flex gap-1 lg:gap-2 pb-2">
           {configuration.map((item) => (
             <div
               key={`${item.type}-${item.id}`}
-              className="bg-white rounded-lg p-1 border text-center min-w-20 flex-shrink-0"
+              className="bg-white rounded-lg p-1 lg:p-2 border text-center min-w-16 lg:min-w-20 flex-shrink-0"
             >
               {/* Visual representation */}
               {/* Fabric  */}
@@ -40,30 +39,36 @@ export function ConfigurationSummary() {
                   <Image
                     src={
                       item.image ||
-                      "https://images.pexels.com/photos/28216688/pexels-photo-28216688.png"
+                      "https://images.pexels.com/photos/28216688/pexels-photo-28216688.png" ||
+                      "/placeholder.svg" ||
+                      "/placeholder.svg" ||
+                      "/placeholder.svg"
                     }
                     alt={item.name}
-                    width={100}
-                    height={100}
-                    className="mx-auto mb-2 rounded-md"
+                    width={40}
+                    height={40}
+                    className="mx-auto mb-1 rounded-md w-6 lg:w-8 h-6 lg:h-8"
                   />
                 ) : (
                   <div
-                    className="w-8 h-8 mx-auto mb-2 rounded border border-gray-200"
+                    className="w-6 lg:w-8 h-6 lg:h-8 mx-auto mb-1 rounded border border-gray-200"
                     style={{ backgroundColor: item.color }}
                   />
                 ))}
 
               {/* styles */}
               {item.icon && !item.color && (
-                <div className="w-20 h-20 mx-auto mb-2">
+                <div className="w-10 lg:w-16 h-10 lg:h-16 mx-auto mb-1">
                   <Image
-                    width={32}
-                    height={32}
+                    width={20}
+                    height={20}
                     src={
                       item.icon ||
                       item.image ||
-                      "https://images.pexels.com/photos/28216688/pexels-photo-28216688.png"
+                      "https://images.pexels.com/photos/28216688/pexels-photo-28216688.png" ||
+                      "/placeholder.svg" ||
+                      "/placeholder.svg" ||
+                      "/placeholder.svg"
                     }
                     alt={item.name}
                     className="w-full h-full object-contain"
@@ -73,39 +78,40 @@ export function ConfigurationSummary() {
 
               {/* Accents  */}
               {!item.icon && !item.color && (
-                <div className="!w-26 h-20 mx-auto mb-2">
+                <div className="w-10 lg:w-16 h-10 lg:h-16 mx-auto mb-1">
                   <Image
-                    width={100}
-                    height={100}
+                    width={40}
+                    height={40}
                     src={
                       item.image ||
-                      "https://images.pexels.com/photos/28216688/pexels-photo-28216688.png"
+                      "https://images.pexels.com/photos/28216688/pexels-photo-28216688.png" ||
+                      "/placeholder.svg" ||
+                      "/placeholder.svg" ||
+                      "/placeholder.svg"
                     }
                     alt={item.name}
-                    className="w-full px-4 h-full object-contain"
+                    className="w-full px-1 lg:px-2 h-full object-contain"
                   />
                 </div>
               )}
 
               {/* Label */}
-              <div className="flex justify-between items-center text-xs font-medium">
-                {" "}
-                <h3 className="text-xs font-medium text-gray-500">
+              <div className="flex justify-between items-center text-[9px] lg:text-xs font-medium">
+                <h3 className="text-[9px] lg:text-xs font-medium text-gray-500 truncate">
                   {item.material}
                 </h3>
                 {item.price && (
-                  <h3 className="text-xs font-medium text-gray-500">
-                    {item.price ? `$${item.price.toFixed(2)}` : "Free"}
+                  <h3 className="text-[9px] lg:text-xs font-medium text-gray-500">
+                    ${item.price.toFixed(0)}
                   </h3>
                 )}
               </div>
-              <div className="text-xs font-medium text-gray-800 truncate">
+              <div className="text-[9px] lg:text-xs font-medium text-gray-800 truncate leading-tight">
                 {item.name}
               </div>
-
               {/* Category label for style and accents */}
               {item.category && (
-                <div className="text-xs text-gray-500 mt-1 capitalize">
+                <div className="text-[8px] lg:text-xs text-gray-500 mt-1 capitalize leading-tight">
                   {item.category.replace("-", " ")}
                 </div>
               )}

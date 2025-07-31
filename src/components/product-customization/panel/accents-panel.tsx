@@ -3,13 +3,11 @@
 
 import Image from "next/image";
 import { useCustomization } from "@/components/product-customization/customization-provider";
-
 import accentImg from "@/Public/assets/product/accents/coat/Screenshot 2025-05-29 141803 1.png";
 import accentImg1 from "@/Public/assets/product/accents/coat/Screenshot 2025-05-29 141813.png";
 import accentImg2 from "@/Public/assets/product/accents/coat/Screenshot 2025-05-29 141821.png";
 import accentImg3 from "@/Public/assets/product/accents/coat/Screenshot 2025-05-29 141803 1.png";
 import accentImg4 from "@/Public/assets/product/accents/coat/Screenshot 2025-05-29 141803 1.png";
-
 import pocketImg from "@/Public/assets/product/accents/coat/Screenshot 2025-05-29 141926.png";
 import btnImg from "@/Public/assets/product/accents/coat/Screenshot 2025-05-29 141950.png";
 import btnWImg from "@/Public/assets/product/accents/coat/Screenshot 2025-05-29 141955.png";
@@ -165,50 +163,56 @@ export function AccentsPanel() {
   };
 
   return (
-    <div className="flex h-full">
+    <div className="flex flex-col lg:flex-row h-[calc(100vh-300px)] lg:h-full">
       {/* Left Panel - Categories */}
-      <div className="w-[200px] bg-gray-50 border-r border-gray-200 overflow-y-auto">
-        <div className="p-4 space-y-3">
-          {accentCategories.map((category) => (
-            <div
-              key={category.id}
-              className={`rounded-lg p-4 cursor-pointer transition-colors w-[164px] h-[144px] ${
-                currentCategory === category.id
-                  ? "bg-pink-50 border-2 border-pink-300"
-                  : "  hover:bg-pink-50 border"
-              }`}
-              onClick={() => setCurrentCategory(category.id)}
-            >
-              <div className="flex items-center flex-col justify-center h-full">
-                <div className="rounded-lg flex items-center justify-center mb-3">
-                  <Image
-                    width={60}
-                    height={60}
-                    src={
-                      category.image ||
-                      "https://images.pexels.com/photos/28216688/pexels-photo-28216688.png"
-                    }
-                    alt={category.name}
-                    className="w-[60px] h-[60px] object-contain"
-                  />
-                </div>
-                <div className="font-medium text-gray-800 text-center text-sm">
-                  {category.name}
+      <div className="w-full lg:w-[200px] bg-gray-50 border-b lg:border-b-0 lg:border-r border-gray-200 overflow-y-auto">
+        <div className="p-2 lg:p-4">
+          {/* Mobile: Horizontal scroll, Desktop: Vertical stack */}
+          <div className="flex lg:flex-col gap-2 lg:gap-3 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0">
+            {accentCategories.map((category) => (
+              <div
+                key={category.id}
+                className={`rounded-lg p-2 lg:p-4 cursor-pointer transition-colors min-w-[80px] lg:min-w-0 lg:w-[164px] h-[80px] lg:h-[144px] flex-shrink-0 ${
+                  currentCategory === category.id
+                    ? "bg-gray-100 border-2 border-red-300"
+                    : "hover:bg-gray-100 border"
+                }`}
+                onClick={() => setCurrentCategory(category.id)}
+              >
+                <div className="flex items-center flex-col justify-center h-full">
+                  <div className="rounded-lg flex items-center justify-center mb-2 lg:mb-3">
+                    <Image
+                      width={30}
+                      height={30}
+                      src={
+                        category.image ||
+                        "https://images.pexels.com/photos/28216688/pexels-photo-28216688.png" ||
+                        "/placeholder.svg" ||
+                        "/placeholder.svg" ||
+                        "/placeholder.svg"
+                      }
+                      alt={category.name}
+                      className="w-[30px] lg:w-[60px] h-[30px] lg:h-[60px] object-contain"
+                    />
+                  </div>
+                  <div className="font-medium text-gray-800 text-center text-[10px] lg:text-sm leading-tight">
+                    {category.name}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Right Panel - Options */}
       <div className="flex-1 bg-white">
         {currentCategory ? (
-          <div className="p-6">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
+          <div className="p-3 lg:p-6">
+            <h2 className="text-lg lg:text-2xl font-bold text-gray-900 mb-4 lg:mb-6">
               {getCategoryDisplayName(currentCategory)}
             </h2>
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-3 lg:gap-6">
               {(accentOptions[currentCategory] || []).map((option) => (
                 <div
                   key={option.id}
@@ -216,24 +220,27 @@ export function AccentsPanel() {
                   onClick={() => handleAccentSelect(option, currentCategory)}
                 >
                   <div
-                    className={`border rounded-lg p-6 transition-all duration-200 ${
+                    className={`border rounded-lg p-2 transition-all duration-200 ${
                       isOptionSelected(option.id, currentCategory)
-                        ? "border-pink-400 bg-pink-50 shadow-md"
+                        ? "border-red-400 bg-gray-100 shadow-md"
                         : "border-gray-200 bg-white group-hover:border-gray-400 group-hover:shadow-sm"
                     }`}
                   >
                     <div className="flex flex-col items-center">
                       <Image
-                        width={100}
-                        height={100}
+                        width={60}
+                        height={60}
                         src={
                           option.image ||
-                          "https://images.pexels.com/photos/28216688/pexels-photo-28216688.png"
+                          "https://images.pexels.com/photos/28216688/pexels-photo-28216688.png" ||
+                          "/placeholder.svg" ||
+                          "/placeholder.svg" ||
+                          "/placeholder.svg"
                         }
                         alt={option.name}
-                        className="w-[100px] h-[100px] object-contain mb-4"
+                        className="w-[60px] lg:w-[100px] h-[60px] lg:h-[100px] object-contain mb-2 lg:mb-4"
                       />
-                      <div className="text-sm font-medium text-center text-gray-800">
+                      <div className="text-xs lg:text-sm font-medium text-center text-gray-800 leading-tight">
                         {option.name}
                       </div>
                     </div>
@@ -245,10 +252,12 @@ export function AccentsPanel() {
         ) : (
           <div className="flex items-center justify-center h-full">
             <div className="text-center text-gray-500">
-              <h3 className="text-lg font-medium mb-2">
+              <h3 className="text-base lg:text-lg font-medium mb-2">
                 Select an Accent Category
               </h3>
-              <p>Choose a category from the left to see available options</p>
+              <p className="text-sm">
+                Choose a category above to see available options
+              </p>
             </div>
           </div>
         )}
