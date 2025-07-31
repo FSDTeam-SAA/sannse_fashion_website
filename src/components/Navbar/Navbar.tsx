@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ChevronDown, ShoppingCart, User, Menu, X } from "lucide-react";
+import { ChevronDown, ShoppingCart, User, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -264,22 +264,24 @@ export default function Navbar() {
                 side="right"
                 className="w-[300px] bg-black/95 backdrop-blur-md text-white border-gray-700"
               >
-                <div className="flex items-center justify-between mb-6">
+                {/* Logo */}
+                <div className="flex-shrink-0">
                   <Link
                     href="/"
-                    className="text-2xl font-bold"
-                    onClick={() => setIsOpen(false)}
+                    className={`font-bold transition-all duration-300 ${
+                      isScrolled ? "text-xl" : "text-2xl"
+                    }`}
                   >
-                    SAN<span className="text-red-500">N</span>SE
+                    <div className="w-[156px] h-[41px] m-5">
+                      <Image
+                        src={logoImage}
+                        width={200}
+                        height={200}
+                        alt="logoImage"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
                   </Link>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => setIsOpen(false)}
-                    className="text-white hover:bg-gray-800"
-                  >
-                    <X className="h-7 w-7" />
-                  </Button>
                 </div>
                 <div className="flex flex-col space-y-4">
                   <Link
