@@ -40,8 +40,8 @@ const slides: SlideData[] = [
     title: "Discover Premium Quality\nFashion Collection",
     subtitle:
       "Explore our curated selection of premium clothing and accessories. Find pieces that express your unique style.",
-    primaryButton: "Shop Now",
-    secondaryButton: "View Collection",
+    primaryButton: "Customize Product",
+    secondaryButton: "Readymade Product",
   },
   {
     id: 3,
@@ -50,8 +50,8 @@ const slides: SlideData[] = [
     title: "Tailored to Perfection\nJust for You",
     subtitle:
       "Experience custom-tailored garments designed for your measurements. Every detail meets your expectations.",
-    primaryButton: "Get Measured",
-    secondaryButton: "Learn More",
+    primaryButton: "Customize Product",
+    secondaryButton: "Readymade Product",
   },
 ];
 
@@ -104,7 +104,7 @@ export default function Homehero() {
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                       <div>
-                        <Link href="/products">
+                        <Link href="/customize-product">
                           <Button className="bg-red-600 h-[51px] w-[230px] hover:bg-red-700 text-lg font-semibold transition-transform hover:scale-105">
                             {slide.primaryButton}
                           </Button>
