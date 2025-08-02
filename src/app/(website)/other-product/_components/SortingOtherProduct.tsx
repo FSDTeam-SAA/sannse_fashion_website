@@ -155,14 +155,12 @@
 
 // export default SortingOtherProduct;
 
-
-
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import { useState, useEffect } from "react";
 import ProductSorting from "@/components/productSorting/ProductSorting";
-import productImage from "@/public/images/productImage.png";
+import productImage from "@/Public/images/productImage.png";
 import { StaticImageData } from "next/image";
 import ShowAllOtherProduct from "./ShowAllOtherProduct";
 
@@ -287,7 +285,11 @@ const SortingOtherProduct = () => {
       filtered = filtered.filter((p) => p.color === newFilters.color);
     }
     if (newFilters.priceRange) {
-      filtered = filtered.filter((p) => p.price >= newFilters.priceRange[0] && p.price <= newFilters.priceRange[1]);
+      filtered = filtered.filter(
+        (p) =>
+          p.price >= newFilters.priceRange[0] &&
+          p.price <= newFilters.priceRange[1]
+      );
     }
 
     setProducts(filtered);

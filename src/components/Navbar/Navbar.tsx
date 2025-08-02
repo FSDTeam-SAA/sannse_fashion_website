@@ -1,14 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import {
-  ChevronDown,
-  ShoppingCart,
-  User,
-  Menu,
-  X,
-  CircleUser,
-} from "lucide-react";
+import { ChevronDown, ShoppingCart, User, Menu, CircleUser } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -20,8 +13,8 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import logoImage from "@/Public/images/logo.svg";
 import Image from "next/image";
-import logoImage from "@/public/images/logo.svg";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -93,7 +86,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 text-white border-b transition-all duration-300 ${
+      className={`fixed top-0 w-screen z-50 text-white border-b transition-all duration-300 ${
         isScrolled
           ? "bg-black/95 backdrop-blur-md border-gray-700 shadow-lg"
           : "bg-[#000000] border-gray-800"
@@ -107,13 +100,18 @@ export default function Navbar() {
         >
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/">
-              <div className="w-[156px] h-[48px]">
+            <Link
+              href="/"
+              className={`font-bold transition-all duration-300 ${
+                isScrolled ? "text-xl" : "text-2xl"
+              }`}
+            >
+              <div className="w-[156px] h-[41px] m-5">
                 <Image
                   src={logoImage}
-                  alt="logo image"
                   width={200}
                   height={200}
+                  alt="logoImage"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -240,13 +238,13 @@ export default function Navbar() {
                 </DropdownMenuContent>
               </DropdownMenu>
             ) : (
-              <div
+              <Button
+                variant="ghost"
                 className="text-white hover:text-gray-300"
                 onClick={handleLogin}
               >
-                {/* Login */}
-                <CircleUser className="h-7 w-7" />
-              </div>
+                Login
+              </Button>
             )}
           </div>
           {/* Mobile menu button */}
@@ -265,22 +263,24 @@ export default function Navbar() {
                 side="right"
                 className="w-[300px] bg-black/95 backdrop-blur-md text-white border-gray-700"
               >
-                <div className="flex items-center justify-between mb-6">
+                {/* Logo */}
+                <div className="flex-shrink-0">
                   <Link
                     href="/"
-                    className="text-2xl font-bold"
-                    onClick={() => setIsOpen(false)}
+                    className={`font-bold transition-all duration-300 ${
+                      isScrolled ? "text-xl" : "text-2xl"
+                    }`}
                   >
-                    SAN<span className="text-red-500">N</span>SE
+                    <div className="w-[156px] h-[41px] m-5">
+                      <Image
+                        src={logoImage}
+                        width={200}
+                        height={200}
+                        alt="logoImage"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
                   </Link>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => setIsOpen(false)}
-                    className="text-white hover:bg-gray-800"
-                  >
-                    <X className="h-7 w-7" />
-                  </Button>
                 </div>
                 <div className="flex flex-col space-y-4">
                   <Link

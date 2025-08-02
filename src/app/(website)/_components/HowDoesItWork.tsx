@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from 'react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Shirt, CreditCard, Package } from 'lucide-react';
-import Image from 'next/image';
-import number1 from "@/public/images/number1.png";
-import number2 from "@/public/images/number2.png";
-import number3 from "@/public/images/number3.png";
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Shirt, CreditCard, Package } from "lucide-react";
+import Image from "next/image";
+import number1 from "@/Public/images/number1.png";
+import number2 from "@/Public/images/number2.png";
+import number3 from "@/Public/images/number3.png";
 
 interface StepProps {
   title: string;
@@ -16,7 +16,13 @@ interface StepProps {
   numberImage: any;
 }
 
-const Step: React.FC<StepProps> = ({ title, description, icon, bgColor, numberImage }) => {
+const Step: React.FC<StepProps> = ({
+  title,
+  description,
+  icon,
+  bgColor,
+  numberImage,
+}) => {
   return (
     <div className="relative">
       <Card className={`${bgColor} border-0 shadow-sm h-full rounded-[8px]`}>
@@ -28,9 +34,7 @@ const Step: React.FC<StepProps> = ({ title, description, icon, bgColor, numberIm
             </div>
 
             {/* Icon */}
-            <div className="relative z-10">
-              {icon}
-            </div>
+            <div className="relative z-10">{icon}</div>
 
             {/* Title */}
             <h3 className="text-xl font-semibold text-gray-900 relative z-10">
@@ -52,28 +56,33 @@ const HowDoesItWork: React.FC = () => {
   const steps: StepProps[] = [
     {
       title: "Create your design",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin efficitur diam non sodales eleifend. Vivamus ut hendrerit neque. Nunc nec eleifend magna. ",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin efficitur diam non sodales eleifend. Vivamus ut hendrerit neque. Nunc nec eleifend magna. ",
       icon: <Shirt className="w-12 h-12 text-gray-700" strokeWidth={1.5} />,
       bgColor: "bg-blue-50",
       numberColor: "#E9F4FF",
-      numberImage: number1
+      numberImage: number1,
     },
     {
       title: "Create your order",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin efficitur diam non sodales eleifend. Vivamus ut hendrerit neque. Nunc nec eleifend magna. ",
-      icon: <CreditCard className="w-12 h-12 text-gray-700" strokeWidth={1.5} />,
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin efficitur diam non sodales eleifend. Vivamus ut hendrerit neque. Nunc nec eleifend magna. ",
+      icon: (
+        <CreditCard className="w-12 h-12 text-gray-700" strokeWidth={1.5} />
+      ),
       bgColor: "bg-green-50",
       numberColor: "text-green-200",
-      numberImage: number2
+      numberImage: number2,
     },
     {
       title: "Receive Product",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin efficitur diam non sodales eleifend. Vivamus ut hendrerit neque. Nunc nec eleifend magna. ",
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin efficitur diam non sodales eleifend. Vivamus ut hendrerit neque. Nunc nec eleifend magna. ",
       icon: <Package className="w-12 h-12 text-gray-700" strokeWidth={1.5} />,
       bgColor: "bg-red-50",
       numberColor: "text-red-200",
-      numberImage: number3
-    }
+      numberImage: number3,
+    },
   ];
 
   return (

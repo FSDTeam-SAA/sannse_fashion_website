@@ -2,7 +2,7 @@
 
 import React from "react";
 import CustomizeCards from "@/components/customizeCards/CustomizeCards";
-import cusotmimage from "@/public/images/customCardImage.png";
+import cusotmimage from "@/Public/images/customCardImage.png";
 
 const customizeSections = [
   {
@@ -33,8 +33,7 @@ const customizeSections = [
     imageUrl: cusotmimage,
     altText: "Fashion Style 4",
     title: "Curabitur aliquet quam id dui posuere",
-    description:
-      "Vivamus suscipit tortor eget felis porttitor volutpat.",
+    description: "Vivamus suscipit tortor eget felis porttitor volutpat.",
     buttonText: "Know more",
   },
 ];

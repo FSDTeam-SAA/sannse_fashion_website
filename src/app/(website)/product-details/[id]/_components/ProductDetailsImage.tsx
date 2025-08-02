@@ -11,8 +11,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Card, CardContent } from "@/components/ui/card";
-import productImage1 from "@/public/images/productImage.png";
-import productImage2 from "@/public/images/productimge2.png";
+import productImage1 from "@/Public/images/productImage.png";
+import productImage2 from "@/Public/images/productimge2.png";
+import Link from "next/link";
 
 interface ProductDetailsImageProps {
   productId: string | string[];
@@ -206,19 +207,23 @@ const ProductDetailsImage: React.FC<ProductDetailsImageProps> = ({
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+          <div className="flex gap-4">
+            <Link
+              href={`/customize-product/panel/${productData.id}`}
+              className="flex-1 w-full"
+            >
+              <Button
+                className="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-6 rounded-md transition-colors duration-200"
+                size="lg"
+              >
+                Customize
+              </Button>
+            </Link>
             <Button
-              className="w-full sm:w-[230px] text-lg h-[51px] bg-red-600 hover:bg-red-700 text-white font-medium py-2 sm:py-3 px-4 sm:px-6 rounded-md transition-colors duration-200"
+              className="flex-1 w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg"
               size="lg"
-            >
-              Customize
-            </Button>
-
-            <Button
-              variant="outline"
               onClick={handleAddToCart}
-              className="w-full sm:w-[230px] h-[51px] border border-red-600 text-red-600 hover:bg-red-600 hover:text-white text-lg font-semibold transition-transform hover:scale-105"
-            >
+          >
               Add to Cart
             </Button>
           </div>

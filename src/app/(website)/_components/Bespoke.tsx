@@ -1,8 +1,8 @@
 import Image from "next/image";
-import bespokeImage from "@/public/images/bespoke.png";
-import bespokeImage1 from "@/public/images/Shirts.png";
-import bespokeImage2 from "@/public/images/Jackets.png";
-import bespokeImage3 from "@/public/images/Others .png";
+import bespokeImage from "@/Public/images/bespoke.png";
+import bespokeImage1 from "@/Public/images/Shirts.png";
+import bespokeImage2 from "@/Public/images/Jackets.png";
+import bespokeImage3 from "@/Public/images/Others .png";
 import Link from "next/link";
 
 const BespokeSection = () => {
@@ -58,16 +58,16 @@ const BespokeSection = () => {
         </div>
         <div className="border border-red-600">
           <Link href="/other-product">
-          <div className="flex flex-col items-center bg-[#FDE8E9]">
-            <Image
-              src={bespokeImage3}
-              alt="Shirts"
-              width={300}
-              height={300}
-              className="w-full h-[320px] object-cover border-b border-red-600"
-            />
-            <p className="mt-4 px-4 py-2 text-center font-semibold">Others</p>
-          </div>
+            <div className="flex flex-col items-center bg-[#FDE8E9]">
+              <Image
+                src={bespokeImage3}
+                alt="Shirts"
+                width={300}
+                height={300}
+                className="w-full h-[320px] object-cover border-b border-red-600"
+              />
+              <p className="mt-4 px-4 py-2 text-center font-semibold">Others</p>
+            </div>
           </Link>
         </div>
       </div>

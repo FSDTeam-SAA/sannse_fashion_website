@@ -12,7 +12,7 @@ import {
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Star } from "lucide-react";
 import Image from "next/image";
-import personImage from "@/public/images/customCardImage.png";
+import personImage from "@/Public/images/customCardImage.png";
 
 type Review = {
   id: number;

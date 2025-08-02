@@ -1,9 +1,9 @@
 "use client";
 
 import type { StaticImageData } from "next/image";
-import shirt1 from "@/public/images/jacketProduct.png";
-import shirt2 from "@/public/images/jacketProduct.png";
-import shirt3 from "@/public/images/jacketProduct.png";
+import shirt1 from "@/Public/images/jacketProduct.png";
+import shirt2 from "@/Public/images/jacketProduct.png";
+import shirt3 from "@/Public/images/jacketProduct.png";
 import ProductCard from "@/components/productCard/ProductCard";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
